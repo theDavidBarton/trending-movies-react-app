@@ -9,3 +9,10 @@ script:
   - yarn lint .
   - yarn test --silent
   - yarn run deploy
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  keep_history: true
+  on:
+    branch: gh-pages
