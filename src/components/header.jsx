@@ -7,7 +7,7 @@ class Header extends Component {
   }
 
   getBackground = () => {
-    const background = this.state.response[3].backdrop_path
+    const background = this.state.response[5].backdrop_path
     return background
   }
 
