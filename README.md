@@ -10,6 +10,8 @@ So far it uses mocked content without a backend. In first place I am practicing 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+This product uses the TMDb API but is not endorsed or certified by TMDb.
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -80,3 +82,7 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+# License
+
+MIT

@@ -25,7 +25,7 @@ class Header extends Component {
             <div className="col">
               <br />
               <p className="lead">
-                Today these are the TOP9 trending movies on The Movie Database. All content is provided by the TMDb API.
+                Today these are the TOP9 trending movies on The Movie Database. This product uses the TMDb API but is not endorsed or certified by TMDb.
               </p>
               <p><span className="badge badge-success">#TMDb</span> <span className="badge badge-warning">#trending</span> <span className="badge badge-light">#ReactJS</span> <span className="badge badge-danger">#bootstrap</span></p>
             </div>
