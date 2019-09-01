@@ -18,7 +18,10 @@ class TrendingMovieList extends Component {
 
   render() {
     return (
-      <div className="badge-dark" style={{ paddingBottom: '50px', paddingTop: '25px' }}>
+      <div
+        className="bg-dark"
+        style={{ paddingBottom: '50px', paddingTop: '25px' }}
+      >
         <div className="container">
           <div className="row">
             {this.state.topMovieCount.map(movies => (
