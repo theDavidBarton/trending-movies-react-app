@@ -13,9 +13,7 @@ class TrendingMovie extends Component {
   }
 
   getPoster = () => {
-    const poster =
-      'https://image.tmdb.org/t/p/w342' +
-      this.state.response[this.state.value].poster_path
+    const poster = 'https://image.tmdb.org/t/p/w342' + this.state.response[this.state.value].poster_path
     return poster
   }
 
@@ -25,9 +23,7 @@ class TrendingMovie extends Component {
   }
 
   getLink = () => {
-    const link =
-      'https://www.themoviedb.org/movie/' +
-      this.state.response[this.state.value].id
+    const link = 'https://www.themoviedb.org/movie/' + this.state.response[this.state.value].id
     return link
   }
 
@@ -44,20 +40,13 @@ class TrendingMovie extends Component {
   render() {
     return (
       <div className="col">
-        <div className="card bg-dark shadow-lg" style={{ width: '342px' }}>
+        <div className="card bg-dark text-white shadow-lg" style={{ width: '342px' }}>
           {this.parseJson()}
           <div>
-            <div
-              class="badge-pill badge-warning"
-              style={{ position: 'absolute' }}
-            >
+            <div className="badge-pill badge-warning" style={{ position: 'absolute' }}>
               ★{this.getRating()}/10
             </div>
-            <img
-              className="card-img-top"
-              alt="movie poster"
-              src={this.getPoster()}
-            />
+            <img className="card-img-top" alt="movie poster" src={this.getPoster()} />
           </div>
           <div className="card-body">
             <h2 className="display-4">{this.getTitle()}</h2>
