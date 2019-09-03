@@ -3,17 +3,29 @@ import mockedResponse from '../mocked-response.json'
 
 class Header extends Component {
   state = {
-    response: mockedResponse.results
+    response: mockedResponse.results,
+    lastItem: mockedResponse.results.length - 1,
+    backdropCount: 0
   }
 
   getBackground = () => {
-    const background = this.state.response[2].backdrop_path
+    const background = this.state.response[this.state.backdropCount].backdrop_path
     return background
+  }
+
+  changeBackground = () => {
+    if (this.state.backdropCount === this.state.lastItem) {
+      this.setState({ backdropCount: 0 })
+    } else {
+      this.setState({ backdropCount: this.state.backdropCount + 1 })
+    }
   }
 
   render() {
     return (
       <div
+        onClick={this.changeBackground}
+        id="header-bg-image"
         className="bg-dark"
         style={{
           paddingBottom: '25px',
