@@ -28,12 +28,14 @@ class Header extends Component {
         id="header-bg-image"
         className="bg-dark"
         style={{
-          paddingBottom: '25px',
+          paddingBottom: '100px',
           paddingTop: '25px',
           backgroundImage:
             'linear-gradient(0deg, rgba(52,58,64,1) 0%, rgba(52,58,64,0) 100%), url(https://image.tmdb.org/t/p/w1280' +
             this.getBackground() +
-            ')'
+            ')',
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: 'cover'
         }}
       >
         <div className="container text-white">
