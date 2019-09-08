@@ -5,11 +5,12 @@ const options = {
   method: 'GET',
   url: 'https://api.themoviedb.org/3/trending/movie/day',
   qs: {
-    api_key: '21376bbddce1b1f5e19dbadff41304af'
+    api_key: process.env.TMDB_API_KEY
   },
   body: '{}'
 }
 let parsedResult
+console.log(process.env.TMDB_API_KEY)
 
 async function apiCall(options) {
   // (I.) promise to return the parsedResult for processing
