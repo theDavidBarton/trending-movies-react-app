@@ -5,8 +5,8 @@ class TrendingMovieSkeletonLoading extends Component {
     return (
       <div className='col'>
         <div
-          className='card bg-dark text-white shadow-lg'
-          style={{ width: '342px' }}>
+          className='card bg-dark'
+          style={{ width: '342px', borderStyle: 'none' }}>
           <div>
             <img
               className='card-img-top'
