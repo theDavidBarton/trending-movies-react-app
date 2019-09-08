@@ -1,5 +1,5 @@
 {
-  "homepage": "https://theDavidBarton.github.io/",
+  "homepage": "https://serene-shelf-23946.herokuapp.com/",
   "license": "MIT",
   "name": "trending-movies-react-app",
   "version": "1.0.0",
@@ -16,8 +16,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "predeploy": "yarn run build",
-    "deploy": "gh-pages -d build",
     "lint": "eslint"
   },
   "eslintConfig": {
@@ -34,9 +32,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "gh-pages": "^2.1.1"
   },
   "proxy": "http://localhost:5000/"
 }

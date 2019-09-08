@@ -11,7 +11,9 @@ const options = {
   body: '{}'
 }
 let parsedResult
-console.log(process.env.TMDB_API_KEY)
+if (process.env.TMDB_API_KEY === undefined)
+  console.log('TMDb api key is NOT found among environment variables!')
+else console.log('TMDb api key is found')
 
 async function apiCall(options) {
   // (I.) promise to return the parsedResult for processing

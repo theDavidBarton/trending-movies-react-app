@@ -1,7 +1,7 @@
 {
   "name": "trending-movies-react-app-express-server",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "license": "MIT",
   "dependencies": {
     "express": "^4.17.1",
@@ -9,7 +9,8 @@
   },
   "scripts": {
     "start": "node server.js",
-    "heroku-postbuild": "cd client && yarn && yarn run build"
+    "heroku-postbuild": "cd client && yarn && yarn run build",
+    "how-much-is-the-fish": "heroku ps -a serene-shelf-23946"
   },
   "engines": {
     "node": "10.x"
