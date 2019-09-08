@@ -40,6 +40,11 @@ class TrendingMovie extends Component {
     return rating
   }
 
+  getRank = () => {
+    const rank = this.state.value + 1
+    return rank
+  }
+
   render() {
     return (
       <div className='col'>
@@ -48,11 +53,6 @@ class TrendingMovie extends Component {
           style={{ width: '342px' }}>
           {this.parseJson()}
           <div>
-            <div
-              className='badge-pill badge-warning'
-              style={{ position: 'absolute' }}>
-              ★{this.getRating()}/10
-            </div>
             <img
               className='card-img-top'
               alt='movie poster'
@@ -60,6 +60,16 @@ class TrendingMovie extends Component {
             />
           </div>
           <div className='card-body'>
+            <div
+              className='badge-pill badge-warning'
+              style={{ position: 'absolute', right: 0 }}>
+              ★{this.getRating()}/10
+            </div>
+            <div
+              className='badge-pill badge-danger display-4'
+              style={{ position: 'absolute', left: '20px', top: '20px' }}>
+              #<strong>{this.getRank()}</strong>
+            </div>
             <h2 className='display-4'>{this.getTitle()}</h2>
             <p>{this.getOverview()}</p>
             <a className='btn btn-warning btn-sm' href={this.getLink()}>

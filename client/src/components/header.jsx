@@ -1,8 +1,13 @@
 import React, { Component } from 'react'
 
 class Header extends Component {
+  state = {
+    bgImageIndex: 2
+  }
+
   getBackground = () => {
-    const background = this.props.data.results[0].backdrop_path
+    const background = this.props.data.results[this.state.bgImageIndex]
+      .backdrop_path
     return background
   }
 
@@ -19,7 +24,9 @@ class Header extends Component {
         style={{
           paddingBottom: '25px',
           paddingTop: '25px',
-          backgroundImage: imagePlacement
+          backgroundImage: imagePlacement,
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: 'cover'
         }}>
         <div className='container text-white'>
           <div className='row'>

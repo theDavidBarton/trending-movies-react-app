@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import TrendingMovie from './trendingMovie'
+import TrendingMovieSkeletonLoading from './trendingMovieSkeletonLoading'
 
 class TrendingMovieList extends Component {
   state = {
@@ -35,7 +36,11 @@ class TrendingMovieList extends Component {
           </div>
         ) : (
           <div className='container'>
-            <h2 className='text-warning row'>Loading...</h2>
+            <div className='row'>
+              {this.state.topMovieCount.map(movies => (
+                <TrendingMovieSkeletonLoading key={movies.id} />
+              ))}
+            </div>
           </div>
         )}
       </div>
