@@ -15,7 +15,7 @@ class TrendingMovieSkeletonLoading extends Component {
             />
           </div>
           <div className='card-body text-muted'>
-            <h2 className='display-4'>████████</h2>
+            <h2>████████</h2>
             <p>
               █████████████████████████████████████████████████████████████████████████████
               █████████████████████████████████████████████████████████████████████████████
