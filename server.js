@@ -1,5 +1,6 @@
 const express = require('express')
 const request = require('request')
+const path = require('path')
 
 const options = {
   method: 'GET',
@@ -40,6 +41,7 @@ function endpointCreation() {
     const app = express()
     const port = process.env.PORT || 5000
 
+    app.use(express.static(path.join(__dirname, 'client/build')))
     app.get('/api/trending', async (req, res) => {
       res.json(await apiCall(options))
       console.log('endpoint is ready!')
