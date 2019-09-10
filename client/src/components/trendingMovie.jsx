@@ -47,11 +47,11 @@ class TrendingMovie extends Component {
 
   render() {
     return (
-      <div className='col'>
+      <div className='col-sm-4 col-xs-1'>
         <a href={this.getLink()} style={{ textDecoration: 'none' }}>
           <div
             className='card bg-dark text-white'
-            style={{ width: '342px', borderStyle: 'none' }}>
+            style={{ borderStyle: 'none' }}>
             {this.parseJson()}
             <div>
               <img
@@ -59,13 +59,13 @@ class TrendingMovie extends Component {
                 alt='movie poster'
                 src={this.getPoster()}
               />
-            </div>
-            <div className='card-body'>
               <div
                 className='badge-pill badge-warning'
                 style={{ position: 'absolute', right: 0 }}>
                 ★{this.getRating()}/10
               </div>
+            </div>
+            <div className='card-body'>
               <div
                 className='badge-pill badge-danger display-4'
                 style={{ position: 'absolute', left: '20px', top: '20px' }}>
