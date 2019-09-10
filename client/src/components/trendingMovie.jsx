@@ -47,7 +47,7 @@ class TrendingMovie extends Component {
 
   render() {
     return (
-      <div className='col col-lg-4 vw-100'>
+      <div className='col-sm-4 col-xs-1'>
         <a href={this.getLink()} style={{ textDecoration: 'none' }}>
           <div
             className='card bg-dark text-white'
