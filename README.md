@@ -58,6 +58,10 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 Deploy to environment: [https://serene-shelf-23946.herokuapp.com/](https://serene-shelf-23946.herokuapp.com/)
 
-# License
+## API key
+
+The API key is stored in the TMDB_API_KEY environment variable (app.env file is gitignored). If you try to serve / build your own instance make sure the environment variable is accessible. (server.js will notify you if API key is accessibble or not). You can get a free API key at TMDb.org: [https://developers.themoviedb.org/3/getting-started/introduction](https://developers.themoviedb.org/3/getting-started/introduction)
+
+## License
 
 MIT
