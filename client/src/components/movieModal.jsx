@@ -47,7 +47,21 @@ class MovieModal extends Component {
 
   getCast = () => {
     const castArray = this.state.data.credits.cast
-    const cast = castArray.map(castMember => castMember.name + ', ')
+    const cast = castArray.map(castMember => (
+      <div className='container' key={castMember.id}>
+        <div className='row'>
+          <img
+            className='col'
+            alt={castMember.name}
+            src={
+              'https://image.tmdb.org/t/p/w138_and_h175_face' +
+              castMember.profile_path
+            }
+          />
+          <div className='col'>{castMember.name}</div>
+        </div>
+      </div>
+    ))
     return cast
   }
 
