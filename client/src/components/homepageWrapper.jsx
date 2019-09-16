@@ -3,6 +3,7 @@ import CookieBar from './cookieBar'
 import Header from './header'
 import Footer from './footer'
 import TrendingMovieList from './trendingMovieList'
+import MovieModal from './movieModal'
 
 class HomepageWrapper extends Component {
   state = {
@@ -29,6 +30,7 @@ class HomepageWrapper extends Component {
       <div>
         {<CookieBar />}
         {<Header data={this.state.data} dataIsReady={this.state.dataIsReady} />}
+        {<MovieModal />}
         {
           <TrendingMovieList
             data={this.state.data}

@@ -48,7 +48,7 @@ class TrendingMovie extends Component {
   render() {
     return (
       <div className='col-sm-4 col-xs-1'>
-        <a href={this.getLink()} style={{ textDecoration: 'none' }}>
+        <div type='button' data-toggle='modal' data-target='#movieModal'>
           <div
             className='card bg-dark text-white'
             style={{ borderStyle: 'none' }}>
@@ -75,7 +75,7 @@ class TrendingMovie extends Component {
               <p>{this.getOverview()}</p>
             </div>
           </div>
-        </a>
+        </div>
       </div>
     )
   }
