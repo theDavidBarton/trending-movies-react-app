@@ -11,14 +11,24 @@ const optionsTrending = {
   }
 }
 
-let optionsMovieDetails = {
+const optionsMovieDetails = {
   method: 'GET',
-  url: null,
+  url: undefined,
   qs: {
     api_key: tmdbApiKey,
     append_to_response: 'videos,credits'
   }
 }
+
+const optionsMovieAutocomplete = {
+  method: 'GET',
+  url: 'https://api.themoviedb.org/3/search/movie',
+  qs: {
+    api_key: tmdbApiKey,
+    query: undefined
+  }
+}
+
 let parsedResult
 
 if (tmdbApiKey === undefined)
@@ -60,12 +70,20 @@ function endpointCreation() {
       console.log('/api/trending endpoint has been called!')
     })
 
-    // providing a dynamic endpoint to movie pages
+    // providing a dynamic endpoint to movie detail pages
     app.get('/api/movieDetails/:tmdbId', async (req, res) => {
       let id = req.params.tmdbId
       optionsMovieDetails.url = `https://api.themoviedb.org/3/movie/${id}`
       res.json(await apiCall(optionsMovieDetails))
       console.log(`/api/movieDetails/${id} endpoint has been called!`)
+    })
+
+    // providing a dynamic endpoint to movie autocomplete
+    app.get('/api/movieAutocomplete', async (req, res) => {
+      let query = req.query.q
+      optionsMovieAutocomplete.qs.query = query
+      res.json(await apiCall(optionsMovieAutocomplete))
+      console.log(`/api/movieAutocomplete?q=${query} endpoint has been called!`)
     })
 
     app.listen(port)

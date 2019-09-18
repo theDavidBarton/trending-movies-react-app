@@ -8,7 +8,8 @@ import MovieModal from './movieModal'
 class HomepageWrapper extends Component {
   state = {
     data: null,
-    dataIsReady: false
+    dataIsReady: false,
+    selectedMovie: null
   }
 
   componentDidMount() {
@@ -29,12 +30,19 @@ class HomepageWrapper extends Component {
     return (
       <div>
         {<CookieBar />}
-        {<Header data={this.state.data} dataIsReady={this.state.dataIsReady} />}
-        {<MovieModal />}
+        {
+          <Header
+            data={this.state.data}
+            dataIsReady={this.state.dataIsReady}
+            selectedMovie={this.state.selectedMovie}
+          />
+        }
+        {<MovieModal selectedMovie={this.state.selectedMovie} />}
         {
           <TrendingMovieList
             data={this.state.data}
             dataIsReady={this.state.dataIsReady}
+            selectedMovie={this.state.selectedMovie}
           />
         }
         {<Footer />}

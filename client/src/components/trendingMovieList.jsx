@@ -30,6 +30,7 @@ class TrendingMovieList extends Component {
                   key={movies.id}
                   value={movies.value}
                   data={this.props.data}
+                  selectedMovie={this.props.selectedMovie}
                 />
               ))}
             </div>

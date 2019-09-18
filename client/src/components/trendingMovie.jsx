@@ -45,6 +45,12 @@ class TrendingMovie extends Component {
     return rank
   }
 
+  setSelectedMovie = () => {
+    this.setState({
+      selectedMovie: this.state.response.results[this.state.value].id
+    })
+  }
+
   render() {
     return (
       <div className='col-sm-4 col-xs-1'>
