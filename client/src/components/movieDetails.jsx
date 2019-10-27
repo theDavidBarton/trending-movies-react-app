@@ -62,7 +62,9 @@ class MovieDetails extends Component {
     const companiesArray = this.state.data.production_companies
     const companyLogos = companiesArray.map(companyElement => (
       <Fragment key={companyElement.id}>
-        {companyElement.logo_path ? <img src={'https://image.tmdb.org/t/p/w45' + companyElement.logo_path} /> : null}
+        {companyElement.logo_path ? (
+          <img src={'https://image.tmdb.org/t/p/w45' + companyElement.logo_path} alt='company logo' />
+        ) : null}
       </Fragment>
     ))
     return companyLogos
@@ -101,8 +103,9 @@ class MovieDetails extends Component {
     return cast
   }
   setDisplayedCast = () => {
-    this.setState({ displayedCastMembers: 15 })
+    this.setState({ displayedCastMembers: 15 }) // _TODO: check the length of the arra of cast members!
   }
+
   render() {
     let bgImage = this.state.dataIsReady
       ? 'url(https://image.tmdb.org/t/p/w1280' + this.getBackground() + ')'

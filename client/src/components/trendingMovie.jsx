@@ -3,7 +3,8 @@ import React, { Component } from 'react'
 class TrendingMovie extends Component {
   state = {
     response: this.props.data,
-    value: this.props.value
+    value: this.props.value,
+    selectedMovie: this.props.selectedMovie
   }
 
   parseJson = () => {
