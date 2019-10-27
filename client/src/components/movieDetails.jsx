@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 
-class MovieModal extends Component {
+class MovieDetails extends Component {
   state = {
     data: null,
     dataIsReady: false,
@@ -59,8 +59,7 @@ class MovieModal extends Component {
   }
 
   getPoster = () => {
-    const poster =
-      'https://image.tmdb.org/t/p/w185' + this.state.data.poster_path
+    const poster = 'https://image.tmdb.org/t/p/w185' + this.state.data.poster_path
     return poster
   }
 
@@ -71,11 +70,7 @@ class MovieModal extends Component {
       <Fragment key={castMember.id}>
         <li className='media my-3'>
           {castMember.profile_path ? (
-            <img
-              alt={castMember.name}
-              src={castImageBase + castMember.profile_path}
-              className='mr-3 rounded-circle'
-            />
+            <img alt={castMember.name} src={castImageBase + castMember.profile_path} className='mr-3 rounded-circle' />
           ) : (
             <div className='mr-3'></div>
           )}
@@ -93,38 +88,15 @@ class MovieModal extends Component {
     return (
       <Fragment>
         {this.state.isOpened ? (
-          <div
-            className='modal in'
-            id='movieModal'
-            tabIndex='-1'
-            role='dialog'
-            aria-labelledby='movieModalLabel'
-            aria-hidden='true'>
+          <div className='row'>
             {this.state.dataIsReady ? (
-              <div
-                className='modal-dialog modal-dialog-scrollable modal-lg'
-                role='document'>
-                <div className='modal-content'>
-                  <div className='modal-header'>
-                    <h5 className='modal-title' id='movieModalLabel'>
-                      {this.getTitle()}
-                    </h5>
-                    <button
-                      type='button'
-                      className='close'
-                      data-dismiss='modal'
-                      aria-label='Close'>
-                      <span aria-hidden='true'>&times;</span>
-                    </button>
-                  </div>
-                  <div className='modal-body container'>
+              <div className='col'>
+                <div>
+                  <div className='container'>
                     <div className='row'>
-                      <img
-                        src={this.getPoster()}
-                        alt='poster'
-                        className='col-md-3 my-1'
-                      />
+                      <img src={this.getPoster()} alt='poster' className='col-md-3 my-1' />
                       <div className='col my-1'>
+                        <h3 id='movieDetailsLabel'>{this.getTitle()}</h3>
                         <h4>Overview:</h4>
                         {this.getOverview()}
                       </div>
@@ -153,4 +125,4 @@ class MovieModal extends Component {
     )
   }
 }
-export default MovieModal
+export default MovieDetails

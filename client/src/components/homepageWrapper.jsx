@@ -3,7 +3,7 @@ import CookieBar from './cookieBar'
 import Header from './header'
 import Footer from './footer'
 import TrendingMovieList from './trendingMovieList'
-import MovieModal from './movieModal'
+import MovieDetails from './movieDetails'
 
 class HomepageWrapper extends Component {
   state = {
@@ -37,7 +37,7 @@ class HomepageWrapper extends Component {
             selectedMovie={this.state.selectedMovie}
           />
         }
-        {<MovieModal selectedMovie={this.state.selectedMovie} />}
+        {<MovieDetails selectedMovie={this.state.selectedMovie} />}
         {
           <TrendingMovieList
             data={this.state.data}

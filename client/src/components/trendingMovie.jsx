@@ -12,9 +12,7 @@ class TrendingMovie extends Component {
   }
 
   getPoster = () => {
-    const poster =
-      'https://image.tmdb.org/t/p/w342' +
-      this.state.response.results[this.state.value].poster_path
+    const poster = 'https://image.tmdb.org/t/p/w342' + this.state.response.results[this.state.value].poster_path
     return poster
   }
 
@@ -24,9 +22,7 @@ class TrendingMovie extends Component {
   }
 
   getLink = () => {
-    const link =
-      'https://www.themoviedb.org/movie/' +
-      this.state.response.results[this.state.value].id
+    const link = 'https://www.themoviedb.org/movie/' + this.state.response.results[this.state.value].id
     return link
   }
 
@@ -54,20 +50,12 @@ class TrendingMovie extends Component {
   render() {
     return (
       <div className='col-sm-4 col-xs-1'>
-        <div type='button' data-toggle='modal' data-target='#movieModal'>
-          <div
-            className='card bg-dark text-white'
-            style={{ borderStyle: 'none' }}>
+        <div type='button' data-toggle='modal' data-target='#movieDetails'>
+          <div className='card bg-dark text-white' style={{ borderStyle: 'none' }}>
             {this.parseJson()}
             <div>
-              <img
-                className='card-img-top'
-                alt='movie poster'
-                src={this.getPoster()}
-              />
-              <div
-                className='badge-pill badge-warning'
-                style={{ position: 'absolute', right: 0 }}>
+              <img className='card-img-top' alt='movie poster' src={this.getPoster()} />
+              <div className='badge-pill badge-warning' style={{ position: 'absolute', right: 0 }}>
                 ★{this.getRating()}/10
               </div>
             </div>
