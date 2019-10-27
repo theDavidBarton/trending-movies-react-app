@@ -4,7 +4,7 @@ class MovieDetails extends Component {
   state = {
     data: null,
     dataIsReady: false,
-    id: 475557,
+    id: 1923,
     isOpened: true
   }
 
@@ -67,7 +67,7 @@ class MovieDetails extends Component {
     return companyLogos
   }
   getBackground = () => {
-    const background = this.state.data.backdrop_path
+    const background = 'https://image.tmdb.org/t/p/w780' + this.state.data.backdrop_path
     return background
   }
   getPoster = () => {
@@ -113,24 +113,29 @@ class MovieDetails extends Component {
                       <h2 className='display-4' id='movieDetailsLabel' display='inline'>
                         {this.getTitle()}
                         <span className='lead'> ({this.getReleaseYear()}) </span>
-                        {this.getCompanyLogos()}
                       </h2>
                     </header>
+                    <blockquote className='blockquote-footer lead'>{this.getTagline()}</blockquote>
                     <div className='row'>
                       <img src={this.getPoster()} alt='poster' className='col-md-3 my-1' />
                       <div className='col my-1'>
-                        <blockquote className='blockquote-footer'>{this.getTagline()}</blockquote>
                         <h4>Overview:</h4>
                         {this.getOverview()}
+                        <br />
+                        <br />
+                        <h4>Images:</h4>
+                        <img className='img-fluid w-50' src={this.getBackground()} alt='backdrop' />
                       </div>
                     </div>
                     <div className='row'>
                       <div className='col-md-3 my-3'>
+                        {this.getCompanyLogos()}
+                        <br />
+                        <strong>Company:</strong> {this.getCompanies()}
+                        <br />
                         <strong>Duration:</strong> {this.getRuntime()} mins
                         <br />
                         <strong>Genre:</strong> {this.getGenres()}
-                        <br />
-                        <strong>Company:</strong> {this.getCompanies()}
                         <br />
                       </div>
                       <div className='col my-3'>
