@@ -4,7 +4,7 @@ class MovieDetails extends Component {
   state = {
     data: null,
     dataIsReady: false,
-    id: 454,
+    id: 475557,
     isOpened: true
   }
 
@@ -27,16 +27,22 @@ class MovieDetails extends Component {
     console.log(this.state.data)
     return title
   }
+  getReleaseYear = () => {
+    const releaseYear = this.state.data.release_date.match(/[0-9]{4}/)
+    return releaseYear
+  }
+  getTagline = () => {
+    const tagline = this.state.data.tagline
+    return tagline
+  }
   getOverview = () => {
     const overView = this.state.data.overview
     return overView
   }
-
   getRuntime = () => {
     const runtime = this.state.data.runtime
     return runtime
   }
-
   getGenres = () => {
     const genresArray = this.state.data.genres
     const genres = genresArray.map((genreElement, index) => (
@@ -44,7 +50,6 @@ class MovieDetails extends Component {
     ))
     return genres
   }
-
   getCompanies = () => {
     const companiesArray = this.state.data.production_companies
     const companies = companiesArray.map((companyElement, index) => (
@@ -52,17 +57,23 @@ class MovieDetails extends Component {
     ))
     return companies
   }
-
+  getCompanyLogos = () => {
+    const companiesArray = this.state.data.production_companies
+    const companyLogos = companiesArray.map(companyElement => (
+      <Fragment key={companyElement.id}>
+        {companyElement.logo_path ? <img src={'https://image.tmdb.org/t/p/w45' + companyElement.logo_path} /> : null}
+      </Fragment>
+    ))
+    return companyLogos
+  }
   getBackground = () => {
     const background = this.state.data.backdrop_path
     return background
   }
-
   getPoster = () => {
     const poster = 'https://image.tmdb.org/t/p/w185' + this.state.data.poster_path
     return poster
   }
-
   getCast = () => {
     const castImageBase = 'https://image.tmdb.org/t/p/w90_and_h90_face'
     const castArray = this.state.data.credits.cast
@@ -72,7 +83,12 @@ class MovieDetails extends Component {
           {castMember.profile_path ? (
             <img alt={castMember.name} src={castImageBase + castMember.profile_path} className='mr-3 rounded-circle' />
           ) : (
-            <div className='mr-3'></div>
+            <div className='mr-3'>
+              <svg width='90' height='90'>
+                <circle cx='45' cy='45' r='45' fill='#D5D8DC' />
+                Sorry, your browser does not support inline SVG.
+              </svg>{' '}
+            </div>
           )}
           <div className='media-body'>
             <h5 className='mt-0 mb-1'>{castMember.name}</h5>
@@ -93,10 +109,17 @@ class MovieDetails extends Component {
               <div className='col'>
                 <div>
                   <div className='container'>
+                    <header border-bottom='1px' solid='#000'>
+                      <h2 className='display-4' id='movieDetailsLabel' display='inline'>
+                        {this.getTitle()}
+                        <span className='lead'> ({this.getReleaseYear()}) </span>
+                        {this.getCompanyLogos()}
+                      </h2>
+                    </header>
                     <div className='row'>
                       <img src={this.getPoster()} alt='poster' className='col-md-3 my-1' />
                       <div className='col my-1'>
-                        <h3 id='movieDetailsLabel'>{this.getTitle()}</h3>
+                        <blockquote className='blockquote-footer'>{this.getTagline()}</blockquote>
                         <h4>Overview:</h4>
                         {this.getOverview()}
                       </div>
