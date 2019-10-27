@@ -6,8 +6,7 @@ class Header extends Component {
   }
 
   getBackground = () => {
-    const background = this.props.data.results[this.state.bgImageIndex]
-      .backdrop_path
+    const background = this.props.data.results[this.state.bgImageIndex].backdrop_path
     return background
   }
 
@@ -35,17 +34,14 @@ class Header extends Component {
               alt='TMDb logo'
               src='https://www.themoviedb.org/assets/2/v4/logos/powered-by-rectangle-green-dcada16968ed648d5eb3b36bbcfdd8cdf804f723dcca775c8f2bf4cea025aad6.svg'
             />
-            <h1
-              className='display-3 col'
-              style={{ textShadow: '2px 2px 4px #343a40' }}>
+            <h1 className='display-3 col' style={{ textShadow: '2px 2px 4px #343a40' }}>
               Trending movies
             </h1>
             <div className='col'>
               <br />
               <p className='lead'>
-                Today these are the TOP9 trending movies on The Movie Database.
-                This product uses the TMDb API but is not endorsed or certified
-                by TMDb.
+                Today these are the TOP9 trending movies on The Movie Database. This product uses the TMDb API but is
+                not endorsed or certified by TMDb.
               </p>
               <p>
                 <span className='badge badge-success'>#TMDb</span>{' '}

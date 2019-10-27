@@ -4,8 +4,9 @@ class MovieDetails extends Component {
   state = {
     data: null,
     dataIsReady: false,
-    id: 1923,
-    isOpened: true
+    id: this.props.selectedMovie,
+    isOpened: true,
+    displayedCastMembers: 5
   }
 
   componentDidMount() {
@@ -67,7 +68,7 @@ class MovieDetails extends Component {
     return companyLogos
   }
   getBackground = () => {
-    const background = 'https://image.tmdb.org/t/p/w780' + this.state.data.backdrop_path
+    const background = this.state.data.backdrop_path
     return background
   }
   getPoster = () => {
@@ -77,7 +78,7 @@ class MovieDetails extends Component {
   getCast = () => {
     const castImageBase = 'https://image.tmdb.org/t/p/w90_and_h90_face'
     const castArray = this.state.data.credits.cast
-    const cast = castArray.map(castMember => (
+    const cast = castArray.slice(0, this.state.displayedCastMembers).map(castMember => (
       <Fragment key={castMember.id}>
         <li className='media my-3'>
           {castMember.profile_path ? (
@@ -99,8 +100,13 @@ class MovieDetails extends Component {
     ))
     return cast
   }
-
+  setDisplayedCast = () => {
+    this.setState({ displayedCastMembers: 15 })
+  }
   render() {
+    let bgImage = this.state.dataIsReady
+      ? 'url(https://image.tmdb.org/t/p/w1280' + this.getBackground() + ')'
+      : 'url(data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==)'
     return (
       <Fragment>
         {this.state.isOpened ? (
@@ -116,15 +122,19 @@ class MovieDetails extends Component {
                       </h2>
                     </header>
                     <blockquote className='blockquote-footer lead'>{this.getTagline()}</blockquote>
-                    <div className='row'>
-                      <img src={this.getPoster()} alt='poster' className='col-md-3 my-1' />
+                    <div
+                      className='row text-white'
+                      style={{
+                        backgroundImage: bgImage,
+                        backgroundRepeat: 'no-repeat'
+                      }}>
+                      <div>
+                        <img src={this.getPoster()} alt='poster' className='img-fluid' height='200px' />
+                      </div>
                       <div className='col my-1'>
                         <h4>Overview:</h4>
                         {this.getOverview()}
                         <br />
-                        <br />
-                        <h4>Images:</h4>
-                        <img className='img-fluid w-50' src={this.getBackground()} alt='backdrop' />
                       </div>
                     </div>
                     <div className='row'>
@@ -141,6 +151,7 @@ class MovieDetails extends Component {
                       <div className='col my-3'>
                         <h4>Cast:</h4>
                         <ul className='list-unstyled'>{this.getCast()}</ul>
+                        <button onClick={this.setDisplayedCast}>Show full cast</button>
                       </div>
                     </div>
                   </div>
