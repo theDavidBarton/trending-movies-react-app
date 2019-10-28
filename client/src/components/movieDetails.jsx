@@ -28,22 +28,27 @@ class MovieDetails extends Component {
     console.log(this.state.data)
     return title
   }
+
   getReleaseYear = () => {
     const releaseYear = this.state.data.release_date.match(/[0-9]{4}/)
     return releaseYear
   }
+
   getTagline = () => {
     const tagline = this.state.data.tagline
     return tagline
   }
+
   getOverview = () => {
     const overView = this.state.data.overview
     return overView
   }
+
   getRuntime = () => {
     const runtime = this.state.data.runtime
     return runtime
   }
+
   getGenres = () => {
     const genresArray = this.state.data.genres
     const genres = genresArray.map((genreElement, index) => (
@@ -51,6 +56,7 @@ class MovieDetails extends Component {
     ))
     return genres
   }
+
   getCompanies = () => {
     const companiesArray = this.state.data.production_companies
     const companies = companiesArray.map((companyElement, index) => (
@@ -58,6 +64,7 @@ class MovieDetails extends Component {
     ))
     return companies
   }
+
   getCompanyLogos = () => {
     const companiesArray = this.state.data.production_companies
     const companyLogos = companiesArray.map(companyElement => (
@@ -69,14 +76,17 @@ class MovieDetails extends Component {
     ))
     return companyLogos
   }
+
   getBackground = () => {
     const background = this.state.data.backdrop_path
     return background
   }
+
   getPoster = () => {
     const poster = 'https://image.tmdb.org/t/p/w185' + this.state.data.poster_path
     return poster
   }
+
   getCast = () => {
     const castImageBase = 'https://image.tmdb.org/t/p/w90_and_h90_face'
     const castArray = this.state.data.credits.cast
@@ -102,6 +112,7 @@ class MovieDetails extends Component {
     ))
     return cast
   }
+
   setDisplayedCast = () => {
     this.setState({ displayedCastMembers: 15 }) // _TODO: check the length of the arra of cast members!
   }
@@ -129,7 +140,8 @@ class MovieDetails extends Component {
                       className='row text-white'
                       style={{
                         backgroundImage: bgImage,
-                        backgroundRepeat: 'no-repeat'
+                        backgroundRepeat: 'no-repeat',
+                        filter: 'grayscale(100%)'
                       }}>
                       <div>
                         <img src={this.getPoster()} alt='poster' className='img-fluid' height='200px' />

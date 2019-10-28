@@ -9,7 +9,7 @@ class HomepageWrapper extends Component {
   state = {
     data: null,
     dataIsReady: false,
-    selectedMovie: 637 // null | mocked movie ID; it should be handled with a function inside trendingMovieList.jsx !!!
+    selectedMovie: 380 // null | mocked movie ID; it should be handled with a function inside trendingMovieList.jsx !!!
   }
 
   componentDidMount() {
