@@ -12,6 +12,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 This product uses the TMDb API but is not endorsed or certified by TMDb.
 
+![TMDb app](screenshot_page.png)
+
 ## Available Scripts
 
 In the project directory, you can run:
