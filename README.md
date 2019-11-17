@@ -12,7 +12,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 This product uses the TMDb API but is not endorsed or certified by TMDb.
 
-![TMDb app](screenshot_page.png)
+![TMDb app](screenshot_page.jpg)
 
 ## Available Scripts
 
