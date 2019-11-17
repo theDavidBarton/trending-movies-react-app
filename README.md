@@ -6,11 +6,17 @@
 
 # Trending Movies [a React.Js App with Node.Js & Express on Heroku]
 
-I am practicing React.Js, Node.Js, Express and Heroku with this repo :)
+I am practicing React.Js, Node.Js, Express and Heroku with this repo :) Deployment is available on Heroku: [https://serene-shelf-23946.herokuapp.com/](https://serene-shelf-23946.herokuapp.com/)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 This product uses the TMDb API but is not endorsed or certified by TMDb.
+
+![TMDb app](screenshot_page.jpg)
+
+## API key
+
+The API key is stored in the TMDB_API_KEY environment variable (app.env file is gitignored). If you try to serve / build your own instance make sure the environment variable is accessible. (server.js will notify you if API key is accessibble or not). You can get a free API key at TMDb.org: [https://developers.themoviedb.org/3/getting-started/introduction](https://developers.themoviedb.org/3/getting-started/introduction)
 
 ## Available Scripts
 
@@ -57,10 +63,6 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 ### `git push heroku master`
 
 Deploy to environment: [https://serene-shelf-23946.herokuapp.com/](https://serene-shelf-23946.herokuapp.com/)
-
-## API key
-
-The API key is stored in the TMDB_API_KEY environment variable (app.env file is gitignored). If you try to serve / build your own instance make sure the environment variable is accessible. (server.js will notify you if API key is accessibble or not). You can get a free API key at TMDb.org: [https://developers.themoviedb.org/3/getting-started/introduction](https://developers.themoviedb.org/3/getting-started/introduction)
 
 ## License
 
