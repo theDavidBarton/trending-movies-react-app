@@ -5,9 +5,9 @@
 ![bootstrap](https://img.shields.io/badge/Bootstrap-true-563D7C.svg?logo=bootstrap)
 ![heroku](https://img.shields.io/badge/Heroku-true-430098.svg?logo=heroku)
 
-# Trending Movies 
+# Trending Movies
 
-Experimental project made in React.Js, Node.Js, Express and deployed on Heroku. Deployment is available here: [https://serene-shelf-23946.herokuapp.com/](https://serene-shelf-23946.herokuapp.com/)
+Experimental project made in React.Js, Node.Js, Express and deployed on Heroku. Deployment is available here: [https://trending-movies-react-app.herokuapp.com/](https://trending-movies-react-app.herokuapp.com/)
 
 The project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -63,7 +63,7 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 ### `git push heroku master`
 
-Deploy to environment: [https://serene-shelf-23946.herokuapp.com/](https://serene-shelf-23946.herokuapp.com/)
+Deploy to environment: [https://trending-movies-react-app.herokuapp.com/](https://trending-movies-react-app.herokuapp.com/)
 
 ## License
 
