@@ -10,7 +10,7 @@
   "scripts": {
     "start": "node server.js",
     "heroku-postbuild": "cd client && yarn && yarn run build",
-    "how-much-is-the-fish": "heroku ps -a serene-shelf-23946"
+    "how-much-is-the-fish": "heroku ps -a trending-movies-react-app"
   },
   "engines": {
     "node": "10.x"
