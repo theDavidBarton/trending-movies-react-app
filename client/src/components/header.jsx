@@ -29,11 +29,13 @@ class Header extends Component {
         }}>
         <div className='container text-white'>
           <div className='row'>
-            <img
-              className='col'
-              alt='TMDb logo'
-              src='https://www.themoviedb.org/assets/2/v4/logos/powered-by-rectangle-green-dcada16968ed648d5eb3b36bbcfdd8cdf804f723dcca775c8f2bf4cea025aad6.svg'
-            />
+            <a href='/'>
+              <img
+                className='col'
+                alt='TMDb logo'
+                src='https://www.themoviedb.org/assets/2/v4/logos/powered-by-rectangle-green-dcada16968ed648d5eb3b36bbcfdd8cdf804f723dcca775c8f2bf4cea025aad6.svg'
+              />
+            </a>
             <h1 className='display-3 col' style={{ textShadow: '2px 2px 4px #343a40' }}>
               Trending movies
             </h1>
