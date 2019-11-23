@@ -114,7 +114,7 @@ class MovieDetails extends Component {
   }
 
   setDisplayedCast = () => {
-    this.setState({ displayedCastMembers: 15 }) // _TODO: check the length of the arra of cast members!
+    this.setState({ displayedCastMembers: 15 }) // _TODO: check the length of the array of cast members!
   }
 
   render() {

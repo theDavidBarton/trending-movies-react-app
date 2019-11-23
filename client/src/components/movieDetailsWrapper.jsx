@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import CookieBar from './cookieBar'
 import Header from './header'
 import Footer from './footer'
-import TrendingMovieList from './trendingMovieList'
+import MovieDetails from './movieDetails'
 
-class HomepageWrapper extends Component {
+class MovieDetailsWrapper extends Component {
   state = {
     data: null,
     dataIsReady: false,
@@ -36,17 +36,11 @@ class HomepageWrapper extends Component {
             selectedMovie={this.state.selectedMovie}
           />
         }
-        {
-          <TrendingMovieList
-            data={this.state.data}
-            dataIsReady={this.state.dataIsReady}
-            selectedMovie={this.state.selectedMovie}
-          />
-        }
+        {<MovieDetails selectedMovie={this.state.selectedMovie} />}
         {<Footer />}
       </div>
     )
   }
 }
 
-export default HomepageWrapper
+export default MovieDetailsWrapper
