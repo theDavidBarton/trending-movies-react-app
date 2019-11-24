@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import logo from './../img/logo-big.png'
 
 class Header extends Component {
   state = {
@@ -28,19 +29,19 @@ class Header extends Component {
           backgroundSize: 'cover'
         }}>
         <div className='container text-white'>
-          <div className='row'>
-            <a href='/'>
-              <img
-                className='col'
-                alt='TMDb logo'
-                src='https://www.themoviedb.org/assets/2/v4/logos/powered-by-rectangle-green-dcada16968ed648d5eb3b36bbcfdd8cdf804f723dcca775c8f2bf4cea025aad6.svg'
-              />
+          <div className='row d-flex flex-wrap align-items-center'>
+            <a className='col text-center' href='/'>
+              <img src={logo} alt='logo' />
             </a>
-            <h1 className='display-3 col' style={{ textShadow: '2px 2px 4px #343a40' }}>
-              Trending movies
-            </h1>
-            <div className='col'>
-              <br />
+            <div className='col d-none d-sm-block'>
+              <img
+                className='position-absolute'
+                alt='TMDb logo'
+                src='https://www.themoviedb.org/assets/2/v4/logos/powered-by-square-green-11c0c7f8e03c4f44aa54d5e91d9531aa9860a9161c49f5fa741b730c5b21a1f2.svg'
+                style={{ width: '130px', left: '-50px', top: '-40px' }}
+              />
+            </div>
+            <div className='col align-bottom'>
               <p className='lead'>
                 Today these are the TOP9 trending movies on The Movie Database. This product uses the TMDb API but is
                 not endorsed or certified by TMDb.
