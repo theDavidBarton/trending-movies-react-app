@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import logo from './../img/logo-big.png'
-import poweredBy from './../img/poweredby-tmdb.png'
 
 class Header extends Component {
   state = {
@@ -30,19 +29,19 @@ class Header extends Component {
           backgroundSize: 'cover'
         }}>
         <div className='container text-white'>
-          <div className='row'>
-            <a href='/'>
-              <img className='col align-middle text-center' src={logo} alt='logo' />
+          <div className='row d-flex flex-wrap align-items-center'>
+            <a className='col text-center' href='/'>
+              <img src={logo} alt='logo' />
             </a>
-            <div className='col d-flex align-items-end'>
+            <div className='col d-none d-sm-block'>
               <img
-                className='d-flex align-items-end text-center'
+                className='position-absolute'
                 alt='TMDb logo'
-                src='https://www.themoviedb.org/assets/2/v4/logos/293x302-powered-by-square-green-3ee4814bb59d8260d51efdd7c124383540fc04ca27d23eaea3a8c87bfa0f388d.png'
+                src='https://www.themoviedb.org/assets/2/v4/logos/powered-by-square-green-11c0c7f8e03c4f44aa54d5e91d9531aa9860a9161c49f5fa741b730c5b21a1f2.svg'
+                style={{ width: '130px', left: '-50px', top: '-40px' }}
               />
             </div>
-            <div className='col'>
-              <br />
+            <div className='col align-bottom'>
               <p className='lead'>
                 Today these are the TOP9 trending movies on The Movie Database. This product uses the TMDb API but is
                 not endorsed or certified by TMDb.
