@@ -65,8 +65,15 @@ function endpointCreation() {
     const app = express()
     const port = process.env.PORT || 5000
 
-    // providing a constant endpoint for trending movies
     app.use(express.static(path.join(__dirname, 'client/build')))
+    // required to serve PWA on heroku production without routing problems
+    if (process.env.NODE_ENV === 'production') {
+      app.get('*', function(req, res) {
+        res.sendFile(path.join(__dirname, 'client/build', 'index.html'))
+      })
+    }
+
+    // providing a constant endpoint for trending movies
     app.get('/api/trending', async (req, res) => {
       res.json(await apiCall(optionsTrending))
       console.log('/api/trending endpoint has been called!')
