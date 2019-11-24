@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import logo from './../img/logo-big.png'
+import poweredBy from './../img/poweredby-tmdb.png'
 
 class Header extends Component {
   state = {
@@ -30,15 +32,15 @@ class Header extends Component {
         <div className='container text-white'>
           <div className='row'>
             <a href='/'>
-              <img
-                className='col'
-                alt='TMDb logo'
-                src='https://www.themoviedb.org/assets/2/v4/logos/powered-by-rectangle-green-dcada16968ed648d5eb3b36bbcfdd8cdf804f723dcca775c8f2bf4cea025aad6.svg'
-              />
+              <img className='col align-middle text-center' src={logo} alt='logo' />
             </a>
-            <h1 className='display-3 col' style={{ textShadow: '2px 2px 4px #343a40' }}>
-              Trending movies
-            </h1>
+            <div className='col d-flex align-items-end'>
+              <img
+                className='d-flex align-items-end text-center'
+                alt='TMDb logo'
+                src='https://www.themoviedb.org/assets/2/v4/logos/293x302-powered-by-square-green-3ee4814bb59d8260d51efdd7c124383540fc04ca27d23eaea3a8c87bfa0f388d.png'
+              />
+            </div>
             <div className='col'>
               <br />
               <p className='lead'>
