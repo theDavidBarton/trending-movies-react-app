@@ -7,8 +7,7 @@ import TrendingMovieList from './trendingMovieList'
 class HomepageWrapper extends Component {
   state = {
     data: null,
-    dataIsReady: false,
-    selectedMovie: 380 // null | mocked movie ID; it should be handled with a function inside trendingMovieList.jsx !!!
+    dataIsReady: false
   }
 
   componentDidMount() {
@@ -36,13 +35,7 @@ class HomepageWrapper extends Component {
             selectedMovie={this.state.selectedMovie}
           />
         }
-        {
-          <TrendingMovieList
-            data={this.state.data}
-            dataIsReady={this.state.dataIsReady}
-            selectedMovie={this.state.selectedMovie}
-          />
-        }
+        {<TrendingMovieList data={this.state.data} dataIsReady={this.state.dataIsReady} />}
         {<Footer />}
       </div>
     )

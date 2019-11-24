@@ -6,7 +6,8 @@ class MovieDetails extends Component {
     dataIsReady: false,
     id: this.props.selectedMovie,
     isOpened: true,
-    displayedCastMembers: 5
+    displayedCastMembers: 5,
+    fullCastIsOpened: false
   }
 
   componentDidMount() {
@@ -114,7 +115,11 @@ class MovieDetails extends Component {
   }
 
   setDisplayedCast = () => {
-    this.setState({ displayedCastMembers: 15 }) // _TODO: check the length of the array of cast members!
+    this.setState({ displayedCastMembers: this.state.displayedCastMembers.length, fullCastIsOpened: true })
+  }
+
+  setBackDisplayedCast = () => {
+    this.setState({ displayedCastMembers: 5, fullCastIsOpened: false })
   }
 
   render() {
@@ -166,7 +171,15 @@ class MovieDetails extends Component {
                       <div className='col my-3'>
                         <h4>Cast:</h4>
                         <ul className='list-unstyled'>{this.getCast()}</ul>
-                        <button onClick={this.setDisplayedCast}>Show full cast</button>
+                        {!this.state.fullCastIsOpened ? (
+                          <button className='btn btn-dark' onClick={this.setDisplayedCast}>
+                            Show full cast
+                          </button>
+                        ) : (
+                          <button className='btn btn-dark' onClick={this.setBackDisplayedCast}>
+                            Hide full cast
+                          </button>
+                        )}
                       </div>
                     </div>
                   </div>

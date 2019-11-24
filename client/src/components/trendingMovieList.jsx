@@ -19,9 +19,7 @@ class TrendingMovieList extends Component {
 
   render() {
     return (
-      <div
-        className='bg-dark'
-        style={{ paddingBottom: '50px', paddingTop: '25px' }}>
+      <div className='bg-dark py-5'>
         {this.props.dataIsReady ? (
           <div className='container'>
             <div className='row'>

@@ -1,3 +1,5 @@
+'use strict'
+
 const express = require('express')
 const request = require('request')
 const path = require('path')
@@ -31,9 +33,9 @@ const optionsMovieAutocomplete = {
 
 let parsedResult
 
-if (tmdbApiKey === undefined)
-  console.log('TMDb api key is NOT found among environment variables!')
-else console.log('TMDb api key is found')
+tmdbApiKey
+  ? console.log('TMDb api key is found')
+  : console.log('TMDb api key is NOT found among environment variables!')
 
 async function apiCall(options) {
   // (I.) promise to return the parsedResult for processing

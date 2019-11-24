@@ -1,6 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { BrowserRouter } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.css'
-import HomepageWrapper from './components/homepageWrapper'
+import App from './components/app'
 
-ReactDOM.render(<HomepageWrapper />, document.getElementById('root'))
+ReactDOM.render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
+  document.getElementById('root')
+)
