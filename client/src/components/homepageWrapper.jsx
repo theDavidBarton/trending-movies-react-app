@@ -28,13 +28,14 @@ class HomepageWrapper extends Component {
     return (
       <div>
         {<CookieBar />}
-        {<Header data={this.state.data} dataIsReady={this.state.dataIsReady} />}
         {
-          <TrendingMovieList
+          <Header
             data={this.state.data}
             dataIsReady={this.state.dataIsReady}
+            selectedMovie={this.state.selectedMovie}
           />
         }
+        {<TrendingMovieList data={this.state.data} dataIsReady={this.state.dataIsReady} />}
         {<Footer />}
       </div>
     )

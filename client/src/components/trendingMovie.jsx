@@ -3,7 +3,8 @@ import React, { Component } from 'react'
 class TrendingMovie extends Component {
   state = {
     response: this.props.data,
-    value: this.props.value
+    value: this.props.value,
+    selectedMovie: this.props.selectedMovie
   }
 
   parseJson = () => {
@@ -12,9 +13,7 @@ class TrendingMovie extends Component {
   }
 
   getPoster = () => {
-    const poster =
-      'https://image.tmdb.org/t/p/w342' +
-      this.state.response.results[this.state.value].poster_path
+    const poster = 'https://image.tmdb.org/t/p/w342' + this.state.response.results[this.state.value].poster_path
     return poster
   }
 
@@ -24,9 +23,7 @@ class TrendingMovie extends Component {
   }
 
   getLink = () => {
-    const link =
-      'https://www.themoviedb.org/movie/' +
-      this.state.response.results[this.state.value].id
+    const link = 'https://www.themoviedb.org/movie/' + this.state.response.results[this.state.value].id
     return link
   }
 
@@ -45,30 +42,27 @@ class TrendingMovie extends Component {
     return rank
   }
 
+  selectedMovie = () => {
+    const movie = '/movie/' + this.state.response.results[this.state.value].id
+    return movie
+  }
+
   render() {
     return (
       <div className='col-sm-4 col-xs-1'>
-        <a href={this.getLink()} style={{ textDecoration: 'none' }}>
-          <div
-            className='card bg-dark text-white'
-            style={{ borderStyle: 'none' }}>
+        <a href={this.selectedMovie()} className='text-decoration-none'>
+          <div className='card bg-dark text-white border-0'>
             {this.parseJson()}
             <div>
-              <img
-                className='card-img-top'
-                alt='movie poster'
-                src={this.getPoster()}
-              />
-              <div
-                className='badge-pill badge-warning'
-                style={{ position: 'absolute', right: 0 }}>
+              <img className='card-img-top' alt='movie poster' src={this.getPoster()} />
+              <div className='badge-pill badge-warning position-absolute' style={{ right: 0 }}>
                 ★{this.getRating()}/10
               </div>
             </div>
             <div className='card-body'>
               <div
-                className='badge-pill badge-danger display-4'
-                style={{ position: 'absolute', left: '20px', top: '20px' }}>
+                className='badge-pill badge-danger display-4 position-absolute'
+                style={{ left: '20px', top: '20px' }}>
                 #<strong>{this.getRank()}</strong>
               </div>
               <h2>{this.getTitle()}</h2>
