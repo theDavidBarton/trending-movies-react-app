@@ -66,9 +66,9 @@ function endpointCreation() {
     const port = process.env.PORT || 5000
 
     app.use(express.static(path.join(__dirname, 'client/build')))
-    // required to serve PWA on heroku production without routing problems
+    // required to serve PWA on heroku production without routing problems; it will skip only 'api' calls
     if (process.env.NODE_ENV === 'production') {
-      app.get('*', function(req, res) {
+      app.get(/^((?!(api)).)*$/, function(req, res) {
         res.sendFile(path.join(__dirname, 'client/build', 'index.html'))
       })
     }
