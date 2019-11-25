@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-import logo from './../img/logo-big.png'
+import logo from './../img/logo-big.svg'
+import github from './../img/github.svg'
+import linkedin from './../img/linkedin.png'
 
 class Header extends Component {
   state = {
@@ -20,38 +22,62 @@ class Header extends Component {
 
     return (
       <div
-        className='bg-dark'
+        className='bg-dark py-3'
         style={{
-          paddingBottom: '25px',
-          paddingTop: '25px',
           backgroundImage: imagePlacement,
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover'
         }}>
         <div className='container text-white'>
-          <div className='row d-flex flex-wrap align-items-center'>
-            <a className='col text-center' href='/'>
-              <img src={logo} alt='logo' />
-            </a>
-            <div className='col d-none d-sm-block'>
-              <img
-                className='position-absolute'
-                alt='TMDb logo'
-                src='https://www.themoviedb.org/assets/2/v4/logos/powered-by-square-green-11c0c7f8e03c4f44aa54d5e91d9531aa9860a9161c49f5fa741b730c5b21a1f2.svg'
-                style={{ width: '130px', left: '-50px', top: '-40px' }}
-              />
+          <div className='row justify-content-md-center'>
+            <div className='col'>
+              <a href='/'>
+                <img
+                  className='img-fluid text-center'
+                  src={logo}
+                  alt='logo'
+                  style={{ height: '100%', width: '350px' }}
+                />
+              </a>
             </div>
-            <div className='col align-bottom'>
-              <p className='lead'>
-                Today these are the TOP9 trending movies on The Movie Database. This product uses the TMDb API but is
-                not endorsed or certified by TMDb.
-              </p>
-              <p>
-                <span className='badge badge-success'>#TMDb</span>{' '}
-                <span className='badge badge-warning'>#trending</span>{' '}
-                <span className='badge badge-light'>#ReactJS</span>{' '}
-                <span className='badge badge-danger'>#bootstrap</span>
-              </p>
+            <div className='col-auto align-self-end order-1 order-md-0'>
+              <h1>trending on TMDb</h1>
+            </div>
+            <div className='col-auto align-self-end my-2'>
+              <ul className='list-unstyled align-bottom' style={{ marginRight: '2em' }}>
+                <li className='my-2'>
+                  <a
+                    href='https://github.com/theDavidBarton'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='btn btn-light'
+                    style={{ display: 'inline-block' }}>
+                    <img
+                      className='float-left'
+                      alt='github logo'
+                      src={github}
+                      style={{ marginRight: '0.5em', height: '22px' }}
+                    />
+                    GitHub
+                  </a>
+                </li>
+                <li className='my-2'>
+                  <a
+                    href='https://linkedin.com/in/theDavidBarton/'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='btn btn-light float-left'
+                    style={{ display: 'inline-block' }}>
+                    <img
+                      className='float-left'
+                      alt='linkedin logo'
+                      src={linkedin}
+                      style={{ marginRight: '0.5em', height: '22px' }}
+                    />
+                    LinkedIn
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
