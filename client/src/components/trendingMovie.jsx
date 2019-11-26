@@ -55,7 +55,7 @@ class TrendingMovie extends Component {
             {this.parseJson()}
             <div>
               <img className='card-img-top' alt='movie poster' src={this.getPoster()} />
-              <div className='badge-pill badge-warning position-absolute' style={{ right: 0 }}>
+              <div className='badge-pill badge-warning position-absolute mt-4' style={{ right: 0 }}>
                 ★{this.getRating()}/10
               </div>
             </div>
