@@ -42,7 +42,7 @@ class Header extends Component {
                 />
               </a>
             </div>
-            <div className='col-auto align-self-end order-1 order-md-0 my-0'>
+            <div className='col-auto align-self-end order-1 order-md-0 d-none d-md-block'>
               {this.state.searchForm ? <SearchForm /> : null}
               <h1>trending on TMDb</h1>
             </div>
