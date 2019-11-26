@@ -1,0 +1,6 @@
+/* overrides bootstrap font with a Google Fonts */
+@import url('https://fonts.googleapis.com/css?family=PT+Sans+Narrow&display=swap');
+
+* {
+  font-family: 'PT Sans Narrow', sans-serif;
+}
