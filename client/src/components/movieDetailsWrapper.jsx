@@ -16,16 +16,14 @@ class MovieDetailsWrapper extends Component {
       <Fragment>
         {this.state.selectedMovie ? (
           <div>
-            {<CookieBar />}
-            {
-              <Header
-                data={this.state.data}
-                dataIsReady={this.state.dataIsReady}
-                selectedMovie={this.state.selectedMovie}
-              />
-            }
-            {<MovieDetails selectedMovie={this.state.selectedMovie} />}
-            {<Footer />}
+            <CookieBar />
+            <Header
+              data={this.state.data}
+              dataIsReady={this.state.dataIsReady}
+              selectedMovie={this.state.selectedMovie}
+            />
+            <MovieDetails selectedMovie={this.state.selectedMovie} />
+            <Footer />
           </div>
         ) : null}
       </Fragment>
