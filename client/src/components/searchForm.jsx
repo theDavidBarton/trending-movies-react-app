@@ -5,7 +5,7 @@ class SearchForm extends Component {
     data: null,
     dataIsReady: false,
     dropdownIsopened: true,
-    keyword: 'Scary Movie' // hardcoded input query string for development
+    keyword: 'Empire' // hardcoded input query string for development
   }
 
   componentDidMount() {
@@ -46,19 +46,23 @@ class SearchForm extends Component {
   getDropdown = () => {
     const dropdown = (
       <Fragment>
-        {this.state.data.results.slice(0, 5).map(result => (
-          <a key={result.id + 'a'} href={`/movie/${result.id}`} className='text-decoration-none'>
-            <li key={result.id + 'li'} className='my-1'>
-              <img
-                key={result.id + 'img'}
-                src={result.poster_path ? `https://image.tmdb.org/t/p/w45${result.poster_path}` : null}
-              />
-              <span key={result.id + 'span'} className='mx-1'>
-                {result.title} ({result.release_date.match(/[0-9]{4}/)})
-              </span>
-            </li>
-          </a>
-        ))}
+        {this.state.data.total_results >= 1 ? (
+          this.state.data.results.slice(0, 5).map(result => (
+            <a key={result.id + 'a'} href={`/movie/${result.id}`} className='text-decoration-none'>
+              <li key={result.id + 'li'} className='my-1'>
+                <img
+                  key={result.id + 'img'}
+                  src={result.poster_path ? `https://image.tmdb.org/t/p/w45${result.poster_path}` : null}
+                />
+                <span key={result.id + 'span'} className='mx-1'>
+                  {result.title} ({result.release_date.match(/[0-9]{4}/)})
+                </span>
+              </li>
+            </a>
+          ))
+        ) : (
+          <p>no results found...</p>
+        )}
       </Fragment>
     )
     return dropdown
