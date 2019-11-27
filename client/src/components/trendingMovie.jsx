@@ -7,11 +7,6 @@ class TrendingMovie extends Component {
     selectedMovie: this.props.selectedMovie
   }
 
-  parseJson = () => {
-    const response = this.state.response.results[this.state.value]
-    console.log(response)
-  }
-
   getPoster = () => {
     const poster = 'https://image.tmdb.org/t/p/w342' + this.state.response.results[this.state.value].poster_path
     return poster
@@ -52,7 +47,6 @@ class TrendingMovie extends Component {
       <div className='col-sm-4 col-xs-1'>
         <a href={this.selectedMovie()} className='text-decoration-none'>
           <div className='card bg-dark text-white border-0'>
-            {this.parseJson()}
             <div>
               <img className='card-img-top' alt='movie poster' src={this.getPoster()} />
               <div className='badge-pill badge-warning position-absolute mt-4' style={{ right: 0 }}>

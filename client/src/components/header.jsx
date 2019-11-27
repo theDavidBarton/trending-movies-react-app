@@ -7,7 +7,7 @@ import linkedin from './../img/linkedin.png'
 class Header extends Component {
   state = {
     bgImageIndex: 2,
-    searchForm: false // the SearchForm component is still WIP
+    searchForm: true // the SearchForm component is still WIP
   }
 
   getBackground = () => {
@@ -42,7 +42,7 @@ class Header extends Component {
                 />
               </a>
             </div>
-            <div className='col-auto align-self-end order-1 order-md-0 d-none d-md-block'>
+            <div className='col-auto align-self-end order-1 order-md-0'>
               {this.state.searchForm ? <SearchForm /> : null}
               <h1>trending on TMDb</h1>
             </div>
