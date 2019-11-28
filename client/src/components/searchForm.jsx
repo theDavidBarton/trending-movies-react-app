@@ -31,7 +31,7 @@ class SearchForm extends Component {
               <li
                 key={result.id + 'li'}
                 className='my-1 text-nowrap d-inline-block text-truncate'
-                style={{ maxWidth: '365px' }}>
+                style={{ width: '365px', maxWidth: '365px' }}>
                 {result.poster_path ? (
                   <img
                     alt={result.title}
@@ -51,8 +51,13 @@ class SearchForm extends Component {
             </a>
           ))
         ) : (
-          <p className='my-1'>no results found...</p>
+          <p className='my-1 text-nowrap d-inline-block text-truncate' style={{ width: '365px', maxWidth: '365px' }}>
+            no results found...
+          </p>
         )}
+        <div onClick={this.closeDropdown} className='text-center' style={{ cursor: 'pointer' }}>
+          close dropdown
+        </div>
       </Fragment>
     )
     return dropdown
@@ -64,11 +69,11 @@ class SearchForm extends Component {
       this.getTmdbApi() // send request to api only after 3 characters
       this.setState({ dropdownIsopened: true })
     }
-    console.log(this.state.keyword) // _TODO: remove this before merge
   }
 
+  // it doesn't work as expected so far
   closeDropdown = () => {
-    this.setState({ dropdownIsopened: false })
+    this.setState({ dropdownIsopened: false, keyword: '' })
   }
 
   render() {
@@ -76,7 +81,7 @@ class SearchForm extends Component {
       <Fragment>
         <div>
           <input
-            className='form-control'
+            className='form-control mt-2'
             type='text'
             placeholder='Type a movie name…'
             value={this.state.keyword}
