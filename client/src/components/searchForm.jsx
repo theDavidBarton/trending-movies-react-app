@@ -32,7 +32,7 @@ class SearchForm extends Component {
               <li
                 key={result.id + 'li'}
                 className='my-1 text-nowrap d-inline-block text-truncate'
-                style={{ width: '365px', maxWidth: '365px' }}>
+                style={{ width: '370px' }}>
                 {result.poster_path ? (
                   <img
                     alt={result.title}
@@ -40,7 +40,7 @@ class SearchForm extends Component {
                     src={`https://image.tmdb.org/t/p/w45${result.poster_path}`}
                   />
                 ) : (
-                  <svg width='45' height='62'>
+                  <svg width='45' height='68'>
                     <circle cx='45' cy='45' r='45' fill='#D5D8DC' />
                     Sorry, your browser does not support inline SVG.
                   </svg>
@@ -52,7 +52,7 @@ class SearchForm extends Component {
             </a>
           ))
         ) : (
-          <p className='my-1 text-nowrap d-inline-block text-truncate' style={{ width: '365px', maxWidth: '365px' }}>
+          <p className='my-1 text-nowrap d-inline-block text-truncate' style={{ width: '370px' }}>
             no results found...
           </p>
         )}

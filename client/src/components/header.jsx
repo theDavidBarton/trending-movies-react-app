@@ -43,7 +43,7 @@ class Header extends Component {
             </div>
             <div className='col-auto align-self-end order-1 order-md-0'>
               <SearchForm />
-              <h1>trending on TMDb</h1>
+              <h1 className='d-none d-md-block'>browse The Movie Database</h1>
             </div>
             <div className='col-auto align-self-end my-2'>
               <ul className='list-unstyled align-bottom' style={{ marginRight: '2em' }}>
@@ -53,7 +53,7 @@ class Header extends Component {
                     target='_blank'
                     rel='noopener noreferrer'
                     className='btn btn-light'
-                    style={{ display: 'inline-block' }}>
+                    style={{ display: 'inline-block', width: '104px' }}>
                     <img
                       className='float-left'
                       alt='github logo'
@@ -69,7 +69,7 @@ class Header extends Component {
                     target='_blank'
                     rel='noopener noreferrer'
                     className='btn btn-light float-left'
-                    style={{ display: 'inline-block' }}>
+                    style={{ display: 'inline-block', width: '104px' }}>
                     <img
                       className='float-left'
                       alt='linkedin logo'
