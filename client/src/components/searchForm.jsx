@@ -4,8 +4,8 @@ class SearchForm extends Component {
   state = {
     data: null,
     dataIsReady: false,
-    dropdownIsopened: true,
-    keyword: 'Empire' // hardcoded input query string for development
+    dropdownIsopened: false,
+    keyword: ''
   }
 
   componentDidMount() {
@@ -51,6 +51,7 @@ class SearchForm extends Component {
             <a key={result.id + 'a'} href={`/movie/${result.id}`} className='text-decoration-none'>
               <li key={result.id + 'li'} className='my-1'>
                 <img
+                  alt={result.title}
                   key={result.id + 'img'}
                   src={result.poster_path ? `https://image.tmdb.org/t/p/w45${result.poster_path}` : null}
                 />
@@ -67,31 +68,15 @@ class SearchForm extends Component {
     )
     return dropdown
   }
-  // https://stackoverflow.com/questions/36683770/how-to-get-the-value-of-an-input-field-using-reactjs
 
-  /* _E X A M P L E :
-   * var Component = React.createClass({
-   * getInitialState: function() {
-   *   return {
-   *     inputValue: ''
-   *  };
-   * },
-   *
-   * render: function() {
-   *   return (
-   *    //...
-   *   <input value={this.state.inputValue} onChange={this.updateInputValue}/>
-   *    //...
-   *   );
-   *  },
-   *
-   *  updateInputValue: function(evt) {
-   *   this.setState({
-   *    inputValue: evt.target.value
-   *  });
-   *  }
-   * });
-   */
+  setKeywordInInput = event => {
+    this.setState({ keyword: event.target.value })
+    if (event.target.value.length > 3) {
+      this.getTmdbApi() // save some requests from sending during typing
+      this.setState({ dropdownIsopened: true })
+    }
+    console.log(this.state.keyword)
+  }
 
   render() {
     return (
@@ -101,7 +86,7 @@ class SearchForm extends Component {
           type='text'
           placeholder='Type a movie name…'
           value={this.state.keyword}
-          onChange={''}
+          onChange={this.setKeywordInInput}
         />
         {this.state.dataIsReady ? (
           <Fragment>
