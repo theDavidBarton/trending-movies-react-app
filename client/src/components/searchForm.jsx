@@ -22,6 +22,7 @@ class SearchForm extends Component {
     }
   }
 
+  // _TODO: move to its own component
   getDropdown = () => {
     const dropdown = (
       <Fragment>
@@ -71,7 +72,7 @@ class SearchForm extends Component {
     }
   }
 
-  // it doesn't work as expected so far
+  // it doesn't work as expected so far currently it is used with a "close" bar on the bottom of the dropdown list; it should be used on an onBlur event of the input field
   closeDropdown = () => {
     this.setState({ dropdownIsopened: false, keyword: '' })
   }

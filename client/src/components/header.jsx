@@ -7,7 +7,7 @@ import linkedin from './../img/linkedin.png'
 class Header extends Component {
   state = {
     bgImageIndex: 2,
-    searchForm: true // the SearchForm component is still WIP
+    searchForm: true
   }
 
   getBackground = () => {
