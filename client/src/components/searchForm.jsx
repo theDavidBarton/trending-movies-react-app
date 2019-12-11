@@ -32,7 +32,7 @@ class SearchForm extends Component {
               <li
                 key={result.id + 'li'}
                 className='my-1 text-nowrap d-inline-block text-truncate'
-                style={{ width: '370px' }}>
+                style={{ width: '330px' }}>
                 {result.poster_path ? (
                   <img
                     alt={result.title}
@@ -52,16 +52,33 @@ class SearchForm extends Component {
             </a>
           ))
         ) : (
-          <p className='my-1 text-nowrap d-inline-block text-truncate' style={{ width: '370px' }}>
-            no results found...
-          </p>
+          <li className='my-1 text-nowrap d-inline-block text-truncate' style={{ width: '330px' }}>
+            <span className='mx-1'>no results found...</span>
+          </li>
         )}
-        <div onClick={this.closeDropdown} className='text-center' style={{ cursor: 'pointer' }}>
-          close dropdown
-        </div>
       </Fragment>
     )
     return dropdown
+  }
+
+  getDropdownOverlay = () => {
+    const overlay = (
+      <div
+        id='dropdownOverlay'
+        onClick={this.closeDropdown}
+        style={{
+          width: '100%',
+          height: '100%',
+          backgroundColor: 'rgba(0,0,0,0.5)',
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          zIndex: -1
+        }}></div>
+    )
+    return overlay
   }
 
   setKeywordInInput = event => {
@@ -72,7 +89,6 @@ class SearchForm extends Component {
     }
   }
 
-  // it doesn't work as expected so far currently it is used with a "close" bar on the bottom of the dropdown list; it should be used on an onBlur event of the input field
   closeDropdown = () => {
     this.setState({ dropdownIsopened: false, keyword: '' })
   }
@@ -80,7 +96,7 @@ class SearchForm extends Component {
   render() {
     return (
       <Fragment>
-        <div>
+        <div className='position-relative' style={{ zIndex: 1 }}>
           <input
             className='form-control mt-2'
             type='text'
@@ -91,8 +107,9 @@ class SearchForm extends Component {
           {this.state.dataIsReady ? (
             <Fragment>
               {this.state.dropdownIsopened ? (
-                <div className='bg-light w-auto text-dark position-absolute py-2 px-2' style={{ zIndex: 1 }}>
-                  <ul className='list-unstyled'>{this.getDropdown()}</ul>
+                <div className='bg-light w-auto text-dark position-absolute py-2 px-2'>
+                  <ul className='list-unstyled mb-0'>{this.getDropdown()}</ul>
+                  {this.getDropdownOverlay()}
                 </div>
               ) : null}
             </Fragment>
