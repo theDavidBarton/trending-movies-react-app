@@ -41,7 +41,7 @@ class Header extends Component {
                 />
               </a>
             </div>
-            <div className='col-auto align-self-end order-1 order-md-0'>
+            <div className='col-md-auto col-12 align-self-end order-1 order-md-0'>
               <SearchForm />
               <h1 className='d-none d-md-block'>browse The Movie Database</h1>
             </div>
