@@ -6,9 +6,10 @@ import MovieDetails from './movieDetails'
 
 class MovieDetailsWrapper extends Component {
   state = {
-    data: null,
-    dataIsReady: false,
-    selectedMovie: this.props.match.params.id
+    data: this.props.data,
+    dataIsReady: this.props.dataIsReady,
+    backdropPath: this.props.backdropPath,
+    selectedMovie: 461130 // this.props.match.params.id
   }
 
   render() {

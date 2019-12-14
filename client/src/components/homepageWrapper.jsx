@@ -6,22 +6,9 @@ import TrendingMovieList from './trendingMovieList'
 
 class HomepageWrapper extends Component {
   state = {
-    data: null,
-    dataIsReady: false
-  }
-
-  componentDidMount() {
-    this.getTmdbApi()
-  }
-
-  getTmdbApi = async () => {
-    try {
-      const response = await fetch('/api/trending')
-      const json = await response.json()
-      this.setState({ data: json, dataIsReady: true })
-    } catch (e) {
-      console.error(e)
-    }
+    data: this.props.data,
+    dataIsReady: this.props.dataIsReady,
+    backdropPath: this.props.backdropPath
   }
 
   render() {
@@ -33,6 +20,7 @@ class HomepageWrapper extends Component {
             data={this.state.data}
             dataIsReady={this.state.dataIsReady}
             selectedMovie={this.state.selectedMovie}
+            backdropPath={this.state.backdropPath}
           />
         }
         {<TrendingMovieList data={this.state.data} dataIsReady={this.state.dataIsReady} />}

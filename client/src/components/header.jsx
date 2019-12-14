@@ -5,19 +5,10 @@ import github from './../img/github.svg'
 import linkedin from './../img/linkedin.png'
 
 class Header extends Component {
-  state = {
-    bgImageIndex: 2
-  }
-
-  getBackground = () => {
-    const background = this.props.data.results[this.state.bgImageIndex].backdrop_path
-    return background
-  }
-
   render() {
-    let imagePlacement = this.props.dataIsReady
+    const imagePlacement = this.props.dataIsReady
       ? 'linear-gradient(0deg, rgba(52,58,64,1) 0%, rgba(52,58,64,0) 100%), url(https://image.tmdb.org/t/p/w1280' +
-        this.getBackground() +
+        this.props.backdropPath +
         ')'
       : 'url(data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==)'
 
