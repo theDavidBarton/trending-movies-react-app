@@ -13,12 +13,14 @@ class SearchForm extends Component {
   }
 
   getTmdbApi = async () => {
-    try {
-      const response = await fetch(`/api/movieAutocomplete?q=${this.state.keyword.toLowerCase()}`)
-      const json = await response.json()
-      this.setState({ data: json, dataIsReady: true })
-    } catch (e) {
-      console.error(e)
+    if (this.state.keyword !== '') {
+      try {
+        const response = await fetch(`/api/movieAutocomplete?q=${this.state.keyword.toLowerCase()}`)
+        const json = await response.json()
+        this.setState({ data: json, dataIsReady: true })
+      } catch (e) {
+        console.error(e)
+      }
     }
   }
 

@@ -13,6 +13,15 @@ const optionsTrending = {
   }
 }
 
+const optionsTopRatedRecommended = {
+  method: 'GET',
+  url: 'https://api.themoviedb.org/3/movie/top_rated',
+  qs: {
+    api_key: tmdbApiKey,
+    region: 'gb'
+  }
+}
+
 const optionsMovieDetails = {
   method: 'GET',
   url: undefined,
@@ -79,9 +88,18 @@ function endpointCreation() {
       console.log('/api/trending endpoint has been called!')
     })
 
+    // providing a constant endpoint for a random top rated movie
+    app.get('/api/topRatedRecommended', async (req, res) => {
+      const topRatedResponse = await apiCall(optionsTopRatedRecommended)
+      const randomIndex = Math.floor(Math.random() * Math.floor(20)) // one page contains exactly 20 results
+      const topRatedRandomMovie = topRatedResponse.results[randomIndex]
+      res.json(topRatedRandomMovie)
+      console.log('/api/topRatedRecommended endpoint has been called!')
+    })
+
     // providing a dynamic endpoint to movie detail pages
     app.get('/api/movieDetails/:tmdbId', async (req, res) => {
-      let id = req.params.tmdbId
+      const id = req.params.tmdbId
       optionsMovieDetails.url = `https://api.themoviedb.org/3/movie/${id}`
       res.json(await apiCall(optionsMovieDetails))
       console.log(`/api/movieDetails/${id} endpoint has been called!`)
@@ -89,7 +107,7 @@ function endpointCreation() {
 
     // providing a dynamic endpoint to movie autocomplete
     app.get('/api/movieAutocomplete', async (req, res) => {
-      let query = req.query.q
+      const query = req.query.q
       optionsMovieAutocomplete.qs.query = query
       res.json(await apiCall(optionsMovieAutocomplete))
       console.log(`/api/movieAutocomplete?q=${query} endpoint has been called!`)
