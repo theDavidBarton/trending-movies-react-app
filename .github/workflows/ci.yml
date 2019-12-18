@@ -32,7 +32,4 @@ jobs:
           yarn lint .
 
       - name: Deploy to Heroku
-        env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_TOKEN }}
-        if: github.ref == 'refs/heads/master' && job.status == 'success'
-        run: git push -f https://heroku:$HEROKU_API_KEY@git.heroku.com/trending-movies-react-app.git origin/master:master
+        run: echo "Follow deployment on Heroku https://dashboard.heroku.com/apps/trending-movies-react-app/activity"
