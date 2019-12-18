@@ -27,16 +27,10 @@ class HomepageWrapper extends Component {
   render() {
     return (
       <div>
-        {<CookieBar />}
-        {
-          <Header
-            data={this.state.data}
-            dataIsReady={this.state.dataIsReady}
-            selectedMovie={this.state.selectedMovie}
-          />
-        }
-        {<TrendingMovieList data={this.state.data} dataIsReady={this.state.dataIsReady} />}
-        {<Footer />}
+        <CookieBar />
+        <Header />
+        <TrendingMovieList data={this.state.data} dataIsReady={this.state.dataIsReady} />
+        <Footer />
       </div>
     )
   }

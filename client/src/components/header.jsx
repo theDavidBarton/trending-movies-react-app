@@ -6,16 +6,31 @@ import linkedin from './../img/linkedin.png'
 
 class Header extends Component {
   state = {
-    bgImageIndex: 2
+    data: null,
+    dataIsReady: false
+  }
+
+  componentDidMount() {
+    this.getTmdbApi()
+  }
+
+  getTmdbApi = async () => {
+    try {
+      const response = await fetch('/api/topRatedRecommended')
+      const json = await response.json()
+      this.setState({ data: json, dataIsReady: true })
+    } catch (e) {
+      console.error(e)
+    }
   }
 
   getBackground = () => {
-    const background = this.props.data.results[this.state.bgImageIndex].backdrop_path
+    const background = this.state.data.backdrop_path
     return background
   }
 
   render() {
-    let imagePlacement = this.props.dataIsReady
+    let imagePlacement = this.state.dataIsReady
       ? 'linear-gradient(0deg, rgba(52,58,64,1) 0%, rgba(52,58,64,0) 100%), url(https://image.tmdb.org/t/p/w1280' +
         this.getBackground() +
         ')'
