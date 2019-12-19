@@ -28,13 +28,10 @@
 .heading-line {
   line-height: 0.8em;
 }
-.un-greyscale-img div {
+.greyscale-img-background {
   background-repeat: no-repeat;
   background-size: cover;
   filter: grayscale(100%);
-}
-.greyscale-img .un-greyscale-img div {
-  filter: grayscale(0%);
 }
 .poster-width {
   width: 100%;
