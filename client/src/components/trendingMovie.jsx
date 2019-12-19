@@ -49,14 +49,10 @@ class TrendingMovie extends Component {
           <div className='card bg-dark text-white border-0'>
             <div>
               <img className='card-img-top' alt='movie poster' src={this.getPoster()} />
-              <div className='badge-pill badge-warning position-absolute mt-4' style={{ right: 0 }}>
-                ★{this.getRating()}/10
-              </div>
+              <div className='badge-pill badge-warning position-absolute mt-4 right-badge'>★{this.getRating()}/10</div>
             </div>
             <div className='card-body'>
-              <div
-                className='badge-pill badge-danger display-4 position-absolute'
-                style={{ left: '20px', top: '20px' }}>
+              <div className='badge-pill badge-danger display-4 position-absolute badge-position'>
                 #<strong>{this.getRank()}</strong>
               </div>
               <h2>{this.getTitle()}</h2>

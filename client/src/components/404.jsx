@@ -13,7 +13,7 @@ class Page404 extends Component {
           </div>
         </div>
         <div className='bg-white container text-center'>
-          <img className='col img-fluid py-5' src={logoDark} alt='logo' style={{ height: '100%', width: '350px' }} />
+          <img className='col img-fluid py-5 resized-logo' src={logoDark} alt='logo' />
           <p className='col display-4'>
             Back to{' '}
             <a className='text-secondary' href='/'>

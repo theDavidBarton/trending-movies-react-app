@@ -4,12 +4,9 @@ class TrendingMovieSkeletonLoading extends Component {
   render() {
     return (
       <div className='col-sm-4 col-xs-1'>
-        <div className='card bg-dark text-decoration-none' style={{ width: '342px', borderStyle: 'none' }}>
+        <div className='card bg-dark text-decoration-none border-0'>
           <div className='text-center'>
-            <div
-              className='spinner-border text-warning justify-content-center'
-              style={{ width: '5rem', height: '5rem' }}
-              role='status'>
+            <div className='spinner-border text-warning justify-content-center loading-anim-size' role='status'>
               <span className='sr-only'>Loading...</span>
             </div>
             <img
