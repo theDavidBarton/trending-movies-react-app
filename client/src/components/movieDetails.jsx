@@ -186,9 +186,9 @@ class MovieDetails extends Component {
               </h2>
             </header>
             <blockquote className='blockquote-footer lead'>{this.getTagline()}</blockquote>
-            <div className='row text-white greyscale-img' style={{ backgroundImage: bgImage }}>
+            <div className='row text-white un-greyscale-img' style={{ backgroundImage: bgImage }}>
               <div className='col-md-3 my-3'>
-                <img src={this.getPoster()} alt='poster' className='poster-width greyscale-img' />
+                <img src={this.getPoster()} alt='poster' className='poster-width greyscale-img un-greyscale-img' />
               </div>
               <div className='col m-4'>
                 <div>
