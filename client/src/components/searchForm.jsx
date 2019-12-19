@@ -31,10 +31,7 @@ class SearchForm extends Component {
         {this.state.data.total_results >= 1 ? (
           this.state.data.results.slice(0, 5).map(result => (
             <a key={result.id + 'a'} href={`/movie/${result.id}`} className='text-decoration-none'>
-              <li
-                key={result.id + 'li'}
-                className='my-1 text-nowrap d-inline-block text-truncate'
-                style={{ width: '330px' }}>
+              <li key={result.id + 'li'} className='my-1 text-nowrap d-inline-block text-truncate result-list-width'>
                 {result.poster_path ? (
                   <img
                     alt={result.title}
@@ -54,7 +51,7 @@ class SearchForm extends Component {
             </a>
           ))
         ) : (
-          <li className='my-1 text-nowrap d-inline-block text-truncate' style={{ width: '330px' }}>
+          <li className='my-1 text-nowrap d-inline-block text-truncate result-list-width'>
             <span className='mx-1'>no results found...</span>
           </li>
         )}
@@ -64,22 +61,7 @@ class SearchForm extends Component {
   }
 
   getDropdownOverlay = () => {
-    const overlay = (
-      <div
-        id='dropdownOverlay'
-        onClick={this.closeDropdown}
-        style={{
-          width: '100%',
-          height: '100%',
-          backgroundColor: 'rgba(0,0,0,0.5)',
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          zIndex: -1
-        }}></div>
-    )
+    const overlay = <div id='dropdownOverlay' onClick={this.closeDropdown} className='overlay-style'></div>
     return overlay
   }
 

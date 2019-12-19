@@ -8,7 +8,7 @@ class Footer extends Component {
         <div className='container py-3'>
           <div className='row justify-content-md-center'>
             <div className='col align-self-center text-left'>
-              <img alt='logo' src={logoDark} style={{ height: '100%', width: '350px' }} />
+              <img alt='logo' src={logoDark} className='resized-logo' />
               <p className='text-center mt-2'>copyright © 2019 theDavidBarton</p>
             </div>
             <div className='col align-self-end'>

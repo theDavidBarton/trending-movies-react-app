@@ -180,25 +180,15 @@ class MovieDetails extends Component {
         {this.state.dataIsReady ? (
           <div className='container'>
             <header border-bottom='1px' solid='#000'>
-              <h2 className='display-4 mt-2' id='movieDetailsLabel' display='inline' style={{ lineHeight: '.8em' }}>
+              <h2 className='display-4 mt-2 heading-line' id='movieDetailsLabel' display='inline'>
                 {this.getTitle()}
-                <span className='lead' style={{ lineHeight: '.8em' }}>
-                  {' '}
-                  ({this.getReleaseYear()}){' '}
-                </span>
+                <span className='lead heading-line'> ({this.getReleaseYear()}) </span>
               </h2>
             </header>
             <blockquote className='blockquote-footer lead'>{this.getTagline()}</blockquote>
-            <div
-              className='row text-white'
-              style={{
-                backgroundImage: bgImage,
-                backgroundRepeat: 'no-repeat',
-                backgroundSize: 'cover',
-                filter: 'grayscale(100%)'
-              }}>
+            <div className='row text-white greyscale-img' style={{ backgroundImage: bgImage }}>
               <div className='col-md-3 my-3'>
-                <img src={this.getPoster()} alt='poster' style={{ width: '100%' }} />
+                <img src={this.getPoster()} alt='poster' className='poster-width greyscale-img' />
               </div>
               <div className='col m-4'>
                 <div>
