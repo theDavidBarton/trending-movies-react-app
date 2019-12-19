@@ -99,12 +99,20 @@ class MovieDetails extends Component {
 
   getCrew = () => {
     const castImageBase = 'https://image.tmdb.org/t/p/w90_and_h90_face'
+    // cast display priority: Director, Writer, Novel, Screenplay
     const directorArray = this.state.data.credits.crew.filter(crewMember => crewMember.job === 'Director')
     const writerArray = this.state.data.credits.crew.filter(crewMember => crewMember.job === 'Writer')
     const novelWriterArray = this.state.data.credits.crew.filter(crewMember => crewMember.job === 'Novel')
     const screenWriterArray = this.state.data.credits.crew.filter(crewMember => crewMember.job === 'Screenplay')
     const importantCrewArray = [...directorArray, ...writerArray, ...novelWriterArray, ...screenWriterArray]
-    const importantCrewMembers = importantCrewArray.map(crewMember => (
+
+    const importantCrewArrayReduced = importantCrewArray.reduce((acc, currentCastMember) => {
+      let found = acc.find(el => el.name === currentCastMember.name)
+      found ? (found.job = found.job + ' & ' + currentCastMember.job) : acc.push(currentCastMember)
+      return acc
+    }, [])
+
+    const importantCrewMembers = importantCrewArrayReduced.map(crewMember => (
       <Fragment key={crewMember.id + crewMember.job}>
         <li className='col media my-3'>
           {crewMember.profile_path ? (
