@@ -65,3 +65,14 @@
   width: 5rem;
   height: 5rem;
 }
+.img-zoom-container {
+  overflow: hidden;
+}
+.img-zoom img {
+  display: block;
+  position: relative;
+  transition: all 1s ease-out;
+}
+.img-zoom:hover img {
+  transform: scale(1.03);
+}

@@ -48,7 +48,11 @@ class TrendingMovie extends Component {
         <a href={this.selectedMovie()} className='text-decoration-none'>
           <div className='card bg-dark text-white border-0'>
             <div>
-              <img className='card-img-top' alt='movie poster' src={this.getPoster()} />
+              <div className='img-zoom-container'>
+                <div className='img-zoom'>
+                  <img className='card-img-top' alt='movie poster' src={this.getPoster()} />
+                </div>
+              </div>
               <div className='badge-pill badge-warning position-absolute mt-4 right-badge'>★{this.getRating()}/10</div>
             </div>
             <div className='card-body'>
