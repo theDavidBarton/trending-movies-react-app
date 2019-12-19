@@ -76,3 +76,8 @@
 .img-zoom:hover img {
   transform: scale(1.03);
 }
+@media (hover: none) {
+  .img-zoom:hover img {
+    transform: none;
+  }
+}
