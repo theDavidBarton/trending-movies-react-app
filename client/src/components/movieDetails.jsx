@@ -80,7 +80,11 @@ class MovieDetails extends Component {
     const companyLogos = companiesArray.map(companyElement => (
       <Fragment key={companyElement.id}>
         {companyElement.logo_path ? (
-          <img src={'https://image.tmdb.org/t/p/w45' + companyElement.logo_path} alt='company logo' />
+          <img
+            className='company-logo-margin'
+            src={'https://image.tmdb.org/t/p/w45' + companyElement.logo_path}
+            alt='company logo'
+          />
         ) : null}
       </Fragment>
     ))
@@ -93,7 +97,7 @@ class MovieDetails extends Component {
   }
 
   getPoster = () => {
-    const poster = 'https://image.tmdb.org/t/p/w185' + this.state.data.poster_path
+    const poster = 'https://image.tmdb.org/t/p/w342' + this.state.data.poster_path
     return poster
   }
 
@@ -185,7 +189,11 @@ class MovieDetails extends Component {
                 <span className='lead heading-line'> ({this.getReleaseYear()}) </span>
               </h2>
             </header>
-            <blockquote className='blockquote-footer lead'>{this.getTagline()}</blockquote>
+            {this.getTagline() === '' ? (
+              <blockquote className='lead'> </blockquote>
+            ) : (
+              <blockquote className='blockquote-footer lead'>{this.getTagline()}</blockquote>
+            )}
             <div className='row text-white greyscale-img-background' style={{ backgroundImage: bgImage }}>
               <div className='col-md-3 my-3'>
                 <img src={this.getPoster()} alt='poster' className='poster-width' />
