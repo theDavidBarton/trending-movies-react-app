@@ -36,6 +36,9 @@
 .poster-width {
   width: 100%;
 }
+.company-logo-margin {
+  margin-right: 1em;
+}
 
 /* searchForm */
 .result-list-width {
