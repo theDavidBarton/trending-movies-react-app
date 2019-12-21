@@ -81,7 +81,7 @@ class MovieDetails extends Component {
       <Fragment key={companyElement.id}>
         {companyElement.logo_path ? (
           <img
-            className='company-logo-margin'
+            className='company-logo-margin greyscale-company-logo'
             src={'https://image.tmdb.org/t/p/w45' + companyElement.logo_path}
             alt='company logo'
           />
@@ -165,6 +165,20 @@ class MovieDetails extends Component {
     return cast
   }
 
+  getTrailer = () => {
+    const youtubeKey = 'V75dMMIW2B4'
+    return (
+      <Fragment>
+        <div className='embed-responsive embed-responsive-16by9'>
+          <iframe
+            className='embed-responsive-item'
+            src={`https://www.youtube.com/embed/${youtubeKey}?rel=0`}
+            allowFullScreen></iframe>
+        </div>
+      </Fragment>
+    )
+  }
+
   setDisplayedCast = () => {
     this.setState({ displayedCastMembers: this.state.displayedCastMembers.length, fullCastIsOpened: true })
   }
@@ -238,6 +252,12 @@ class MovieDetails extends Component {
                   </button>
                 )}
               </div>
+              {this.getTrailer() ? (
+                <div className='col my-3'>
+                  <h4>Trailer:</h4>
+                  {this.getTrailer()}
+                </div>
+              ) : null}
             </div>
           </div>
         ) : null}

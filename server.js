@@ -27,7 +27,7 @@ const optionsMovieDetails = {
   url: undefined,
   qs: {
     api_key: tmdbApiKey,
-    append_to_response: 'videos,credits'
+    append_to_response: 'videos,images,credits,similar,reviews,recommendations,keywords'
   }
 }
 
