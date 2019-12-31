@@ -44,7 +44,7 @@ class TrendingMovie extends Component {
 
   render() {
     return (
-      <div className='col-sm-4 col-xs-1'>
+      <div className='col-md-4'>
         <a href={this.selectedMovie()} className='text-decoration-none'>
           <div className='card bg-dark text-white border-0'>
             <div>
