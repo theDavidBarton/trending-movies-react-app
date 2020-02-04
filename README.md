@@ -7,7 +7,7 @@
 
 # Trending Movies
 
-Experimental project made in React.Js, Node.Js, Express and deployed on Heroku. Deployment is available here: [https://trending-movies-react-app.herokuapp.com/](https://trending-movies-react-app.herokuapp.com/)
+Experimental project made in React.Js, Node.Js, Express and deployed on Heroku. Deployment is available here: [trending-movies-react-app.herokuapp.com](https://bit.ly/2GTT1Vg) (redirect happens form theDavidBarton.github.io!)
 
 The project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
