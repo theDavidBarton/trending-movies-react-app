@@ -64,13 +64,11 @@ class SearchForm extends Component {
     const overlay = <div id='dropdownOverlay' onClick={this.closeDropdown} className='overlay-style'></div>
     return overlay
   }
-
-  setKeywordInInput = event => {
-    this.setState({ keyword: event.target.value })
-    if (event.target.value.length > 3) {
-      this.getTmdbApi() // send request to api only after 3 characters
-      this.setState({ dropdownIsopened: true })
-    }
+  
+  setKeywordInInput = async event => {
+    await this.setState({ keyword: event.target.value })
+    this.getTmdbApi()
+    this.setState({ dropdownIsopened: true })
   }
 
   closeDropdown = () => {
