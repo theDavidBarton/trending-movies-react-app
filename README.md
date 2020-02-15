@@ -1,9 +1,7 @@
 [![Actions Status](https://github.com/theDavidBarton/trending-movies-react-app/workflows/CI/badge.svg)](https://github.com/theDavidBarton/trending-movies-react-app/actions)
 ![imdb](https://img.shields.io/badge/IMDb-false-1C1E20.svg?logo=imdb)
 ![tmdb](https://img.shields.io/badge/TMDb-true-01D277.svg?logo=the-movie-database)
-![react](https://img.shields.io/badge/ReactJs-true-61DAFB.svg?logo=React)
-![bootstrap](https://img.shields.io/badge/Bootstrap-true-563D7C.svg?logo=bootstrap)
-![heroku](https://img.shields.io/badge/Heroku-true-430098.svg?logo=heroku)
+![crocodile](https://img.shields.io/badge/crocodiles_in_the_basement-%F0%9F%90%8A_yes-orange.svg)
 
 # Trending Movies
 
