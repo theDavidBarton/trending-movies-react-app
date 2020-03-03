@@ -13,6 +13,6 @@
     "how-much-is-the-fish": "heroku ps -a trending-movies-react-app"
   },
   "engines": {
-    "node": "10.x"
+    "node": "12.x"
   }
 }
