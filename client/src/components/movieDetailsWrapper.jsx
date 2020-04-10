@@ -19,7 +19,7 @@ class MovieDetailsWrapper extends Component {
           <div>
             <CookieBar />
             <Header lang={this.state.lang} />
-            <MovieDetails selectedMovie={this.state.selectedMovie} />
+            <MovieDetails lang={this.state.lang} selectedMovie={this.state.selectedMovie} />
             <Footer />
           </div>
         ) : null}
