@@ -8,7 +8,8 @@ class MovieDetailsWrapper extends Component {
   state = {
     data: null,
     dataIsReady: false,
-    selectedMovie: this.props.match.params.id
+    selectedMovie: this.props.match.params.id,
+    lang: 'en'
   }
 
   render() {
@@ -17,8 +18,8 @@ class MovieDetailsWrapper extends Component {
         {this.state.selectedMovie ? (
           <div>
             <CookieBar />
-            <Header />
-            <MovieDetails selectedMovie={this.state.selectedMovie} />
+            <Header lang={this.state.lang} />
+            <MovieDetails lang={this.state.lang} selectedMovie={this.state.selectedMovie} />
             <Footer />
           </div>
         ) : null}

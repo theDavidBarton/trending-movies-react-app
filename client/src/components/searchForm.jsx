@@ -15,7 +15,7 @@ class SearchForm extends Component {
   getTmdbApi = async () => {
     if (this.state.keyword !== '') {
       try {
-        const response = await fetch(`/api/movieAutocomplete?q=${this.state.keyword.toLowerCase()}`)
+        const response = await fetch(`/api/${this.props.lang}/movieAutocomplete?q=${this.state.keyword.toLowerCase()}`)
         const json = await response.json()
         this.setState({ data: json, dataIsReady: true })
       } catch (e) {
@@ -64,7 +64,7 @@ class SearchForm extends Component {
     const overlay = <div id='dropdownOverlay' onClick={this.closeDropdown} className='overlay-style'></div>
     return overlay
   }
-  
+
   setKeywordInInput = async event => {
     await this.setState({ keyword: event.target.value })
     this.getTmdbApi()

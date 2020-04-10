@@ -15,7 +15,7 @@ class MovieDetails extends Component {
 
   getTmdbApi = async () => {
     try {
-      const response = await fetch(`/api/movieDetails/${this.state.id}`)
+      const response = await fetch(`/api/${this.props.lang}/movieDetails/${this.state.id}`)
       const json = await response.json()
       this.setState({ data: json, dataIsReady: true })
     } catch (e) {

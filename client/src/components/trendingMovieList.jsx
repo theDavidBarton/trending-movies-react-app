@@ -25,6 +25,7 @@ class TrendingMovieList extends Component {
             <div className='row'>
               {this.state.topMovieCount.map(movies => (
                 <TrendingMovie
+                  lang={this.props.lang}
                   key={movies.id}
                   value={movies.value}
                   data={this.props.data}

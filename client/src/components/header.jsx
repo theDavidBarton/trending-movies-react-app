@@ -16,7 +16,7 @@ class Header extends Component {
 
   getTmdbApi = async () => {
     try {
-      const response = await fetch('/api/topRatedRecommended')
+      const response = await fetch(`/api/${this.props.lang}/topRatedRecommended`)
       const json = await response.json()
       this.setState({ data: json, dataIsReady: true })
     } catch (e) {
@@ -52,7 +52,7 @@ class Header extends Component {
               </a>
             </div>
             <div className='col-md-auto col-12 align-self-end order-1 order-md-0'>
-              <SearchForm />
+              <SearchForm lang={this.props.lang} />
               <h1 className='d-none d-md-block'>browse The Movie Database</h1>
             </div>
             <div className='col-auto align-self-end my-2'>
