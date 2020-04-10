@@ -6,7 +6,8 @@ class MovieDetails extends Component {
     dataIsReady: false,
     id: this.props.selectedMovie,
     displayedCastMembers: 5,
-    fullCastIsOpened: false
+    fullCastIsOpened: false,
+    lang: 'en'
   }
 
   componentDidMount() {
@@ -15,7 +16,7 @@ class MovieDetails extends Component {
 
   getTmdbApi = async () => {
     try {
-      const response = await fetch(`/api/movieDetails/${this.state.id}`)
+      const response = await fetch(`/api/${this.state.lang}/movieDetails/${this.state.id}`)
       const json = await response.json()
       this.setState({ data: json, dataIsReady: true })
     } catch (e) {
@@ -77,7 +78,7 @@ class MovieDetails extends Component {
 
   getCompanyLogos = () => {
     const companiesArray = this.state.data.production_companies
-    const companyLogos = companiesArray.map(companyElement => (
+    const companyLogos = companiesArray.map((companyElement) => (
       <Fragment key={companyElement.id}>
         {companyElement.logo_path ? (
           <img
@@ -104,19 +105,19 @@ class MovieDetails extends Component {
   getCrew = () => {
     const castImageBase = 'https://image.tmdb.org/t/p/w90_and_h90_face'
     // cast display priority: Director, Writer, Novel, Screenplay
-    const directorArray = this.state.data.credits.crew.filter(crewMember => crewMember.job === 'Director')
-    const writerArray = this.state.data.credits.crew.filter(crewMember => crewMember.job === 'Writer')
-    const novelWriterArray = this.state.data.credits.crew.filter(crewMember => crewMember.job === 'Novel')
-    const screenWriterArray = this.state.data.credits.crew.filter(crewMember => crewMember.job === 'Screenplay')
+    const directorArray = this.state.data.credits.crew.filter((crewMember) => crewMember.job === 'Director')
+    const writerArray = this.state.data.credits.crew.filter((crewMember) => crewMember.job === 'Writer')
+    const novelWriterArray = this.state.data.credits.crew.filter((crewMember) => crewMember.job === 'Novel')
+    const screenWriterArray = this.state.data.credits.crew.filter((crewMember) => crewMember.job === 'Screenplay')
     const importantCrewArray = [...directorArray, ...writerArray, ...novelWriterArray, ...screenWriterArray]
 
     const importantCrewArrayReduced = importantCrewArray.reduce((acc, currentCastMember) => {
-      let found = acc.find(el => el.name === currentCastMember.name)
+      let found = acc.find((el) => el.name === currentCastMember.name)
       found ? (found.job = found.job + ' & ' + currentCastMember.job) : acc.push(currentCastMember)
       return acc
     }, [])
 
-    const importantCrewMembers = importantCrewArrayReduced.map(crewMember => (
+    const importantCrewMembers = importantCrewArrayReduced.map((crewMember) => (
       <Fragment key={crewMember.id + crewMember.job}>
         <li className='col media my-3'>
           {crewMember.profile_path ? (
@@ -142,7 +143,7 @@ class MovieDetails extends Component {
   getCast = () => {
     const castImageBase = 'https://image.tmdb.org/t/p/w90_and_h90_face'
     const castArray = this.state.data.credits.cast
-    const cast = castArray.slice(0, this.state.displayedCastMembers).map(castMember => (
+    const cast = castArray.slice(0, this.state.displayedCastMembers).map((castMember) => (
       <Fragment key={castMember.id + castMember.character}>
         <li className='media my-3'>
           {castMember.profile_path ? (

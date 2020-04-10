@@ -5,7 +5,8 @@ class SearchForm extends Component {
     data: null,
     dataIsReady: false,
     dropdownIsopened: false,
-    keyword: ''
+    keyword: '',
+    lang: 'en'
   }
 
   componentDidMount() {
@@ -15,7 +16,7 @@ class SearchForm extends Component {
   getTmdbApi = async () => {
     if (this.state.keyword !== '') {
       try {
-        const response = await fetch(`/api/movieAutocomplete?q=${this.state.keyword.toLowerCase()}`)
+        const response = await fetch(`/api/${this.state.lang}/movieAutocomplete?q=${this.state.keyword.toLowerCase()}`)
         const json = await response.json()
         this.setState({ data: json, dataIsReady: true })
       } catch (e) {
@@ -29,7 +30,7 @@ class SearchForm extends Component {
     const dropdown = (
       <Fragment>
         {this.state.data.total_results >= 1 ? (
-          this.state.data.results.slice(0, 5).map(result => (
+          this.state.data.results.slice(0, 5).map((result) => (
             <a key={result.id + 'a'} href={`/movie/${result.id}`} className='text-decoration-none'>
               <li key={result.id + 'li'} className='my-1 text-nowrap d-inline-block text-truncate result-list-width'>
                 {result.poster_path ? (
@@ -64,8 +65,8 @@ class SearchForm extends Component {
     const overlay = <div id='dropdownOverlay' onClick={this.closeDropdown} className='overlay-style'></div>
     return overlay
   }
-  
-  setKeywordInInput = async event => {
+
+  setKeywordInInput = async (event) => {
     await this.setState({ keyword: event.target.value })
     this.getTmdbApi()
     this.setState({ dropdownIsopened: true })

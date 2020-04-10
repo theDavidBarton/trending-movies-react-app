@@ -7,7 +7,8 @@ import TrendingMovieList from './trendingMovieList'
 class HomepageWrapper extends Component {
   state = {
     data: null,
-    dataIsReady: false
+    dataIsReady: false,
+    lang: 'en'
   }
 
   componentDidMount() {
@@ -16,7 +17,7 @@ class HomepageWrapper extends Component {
 
   getTmdbApi = async () => {
     try {
-      const response = await fetch('/api/trending')
+      const response = await fetch(`/api/${this.state.lang}/trending`)
       const json = await response.json()
       this.setState({ data: json, dataIsReady: true })
     } catch (e) {
@@ -28,8 +29,8 @@ class HomepageWrapper extends Component {
     return (
       <div>
         <CookieBar />
-        <Header />
-        <TrendingMovieList data={this.state.data} dataIsReady={this.state.dataIsReady} />
+        <Header lang={this.state.lang} />
+        <TrendingMovieList lang={this.state.lang} data={this.state.data} dataIsReady={this.state.dataIsReady} />
         <Footer />
       </div>
     )

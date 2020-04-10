@@ -7,7 +7,8 @@ import linkedin from './../img/linkedin.png'
 class Header extends Component {
   state = {
     data: null,
-    dataIsReady: false
+    dataIsReady: false,
+    lang: 'en'
   }
 
   componentDidMount() {
@@ -16,7 +17,7 @@ class Header extends Component {
 
   getTmdbApi = async () => {
     try {
-      const response = await fetch('/api/topRatedRecommended')
+      const response = await fetch(`/api/${this.state.lang}/topRatedRecommended`)
       const json = await response.json()
       this.setState({ data: json, dataIsReady: true })
     } catch (e) {
