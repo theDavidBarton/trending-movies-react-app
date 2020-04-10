@@ -4,8 +4,7 @@ class TrendingMovie extends Component {
   state = {
     response: this.props.data,
     value: this.props.value,
-    selectedMovie: this.props.selectedMovie,
-    lang: 'en'
+    selectedMovie: this.props.selectedMovie
   }
 
   getPoster = () => {
@@ -39,7 +38,7 @@ class TrendingMovie extends Component {
   }
 
   selectedMovie = () => {
-    const movie = `movie/${this.state.response.results[this.state.value].id}`
+    const movie = `/movie/${this.state.response.results[this.state.value].id}`
     return movie
   }
 
