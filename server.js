@@ -53,8 +53,8 @@ tmdbApiKey
 async function apiCall(options) {
   // (I.) promise to return the parsedResult for processing
   function tmdbRequest() {
-    return new Promise(function (resolve, reject) {
-      request(options, function (error, response, body) {
+    return new Promise(function(resolve, reject) {
+      request(options, function(error, response, body) {
         try {
           resolve(JSON.parse(body))
         } catch (e) {
@@ -81,7 +81,7 @@ function endpointCreation() {
     app.use(express.static(path.join(__dirname, 'client/build')))
     // required to serve SPA on heroku production without routing problems; it will skip only 'api' calls
     if (process.env.NODE_ENV === 'production') {
-      app.get(/^((?!(api)).)*$/, function (req, res) {
+      app.get(/^((?!(api)).)*$/, function(req, res) {
         res.sendFile(path.join(__dirname, 'client/build', 'index.html'))
       })
     }

@@ -23,7 +23,7 @@ class TrendingMovieList extends Component {
         {this.props.dataIsReady ? (
           <div className='container'>
             <div className='row'>
-              {this.state.topMovieCount.map((movies) => (
+              {this.state.topMovieCount.map(movies => (
                 <TrendingMovie
                   lang={this.props.lang}
                   key={movies.id}
@@ -37,7 +37,7 @@ class TrendingMovieList extends Component {
         ) : (
           <div className='container'>
             <div className='row'>
-              {this.state.topMovieCount.map((movies) => (
+              {this.state.topMovieCount.map(movies => (
                 <TrendingMovieSkeletonLoading key={movies.id} />
               ))}
             </div>
