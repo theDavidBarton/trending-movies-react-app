@@ -11,6 +11,12 @@ class HomepageWrapper extends Component {
     this.getTmdbApi()
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.lang !== prevProps.lang) {
+      this.getTmdbApi()
+    }
+  }
+
   getTmdbApi = async () => {
     try {
       const response = await fetch(`/api/${this.props.lang}/trending`)

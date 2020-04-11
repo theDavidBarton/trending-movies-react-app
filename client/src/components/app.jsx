@@ -9,7 +9,7 @@ import Page404 from './404'
 
 class App extends Component {
   state = {
-    lang: 'sv'
+    lang: 'en'
   }
 
   swapLangEn = () => {
@@ -20,7 +20,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.lang)
     return (
       <div className='App'>
         <nav className='position-absolute lang-position'>
@@ -39,7 +38,7 @@ class App extends Component {
         <Header lang={this.state.lang} />
         <BrowserRouter>
           <Switch>
-            <Route exact path='/' render={() => <HomepageWrapper lang={this.state.lang} />} />
+            <Route exact path='/' render={props => <HomepageWrapper {...props} lang={this.state.lang} />} />
             <Route path='/movie/:id' render={props => <MovieDetailsWrapper {...props} lang={this.state.lang} />} />
             <Route component={Page404} />
           </Switch>
