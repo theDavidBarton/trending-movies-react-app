@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
 import logoDark from './../img/logo-big-dark.svg'
+import labels from './../i18n.json'
 
 class Footer extends Component {
+  state = {
+    labels: labels.footer
+  }
   render() {
     return (
       <div className='bg-light'>
@@ -12,10 +16,7 @@ class Footer extends Component {
               <p className='text-center mt-2'>copyright © 2019 theDavidBarton</p>
             </div>
             <div className='col align-self-end'>
-              <p className='lead'>
-                Today these are the TOP9 trending movies on The Movie Database. This product uses the TMDb API but is
-                not endorsed or certified by TMDb.
-              </p>
+              <p className='lead'>{this.state.labels.text[this.props.lang]}</p>
               <p>
                 <span className='badge badge-success'>#TMDb</span>{' '}
                 <span className='badge badge-warning'>#trending</span>{' '}

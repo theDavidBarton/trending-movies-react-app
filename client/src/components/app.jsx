@@ -1,18 +1,50 @@
 import React, { Component } from 'react'
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, BrowserRouter } from 'react-router-dom'
+import CookieBar from './cookieBar'
+import Header from './header'
+import Footer from './footer'
 import HomepageWrapper from './homepageWrapper'
 import MovieDetailsWrapper from './movieDetailsWrapper'
 import Page404 from './404'
 
 class App extends Component {
+  state = {
+    lang: 'sv'
+  }
+
+  swapLangEn = () => {
+    this.setState({ lang: 'en' })
+  }
+  swapLangSv = () => {
+    this.setState({ lang: 'sv' })
+  }
+
   render() {
+    console.log(this.state.lang)
     return (
       <div className='App'>
-        <Switch>
-          <Route exact path='/' component={HomepageWrapper} />
-          <Route path='/movie/:id' component={MovieDetailsWrapper} />
-          <Route component={Page404} />
-        </Switch>
+        <nav className='position-absolute lang-position'>
+          <button
+            onClick={this.swapLangEn}
+            className={this.state.lang === 'en' ? 'btn btn-light' : 'btn btn-outline-light'}>
+            en
+          </button>{' '}
+          <button
+            onClick={this.swapLangSv}
+            className={this.state.lang === 'sv' ? 'btn btn-light' : 'btn btn-outline-light'}>
+            sv
+          </button>
+        </nav>
+        <CookieBar lang={this.state.lang} />
+        <Header lang={this.state.lang} />
+        <BrowserRouter>
+          <Switch>
+            <Route exact path='/' render={() => <HomepageWrapper lang={this.state.lang} />} />
+            <Route path='/movie/:id' render={props => <MovieDetailsWrapper {...props} lang={this.state.lang} />} />
+            <Route component={Page404} />
+          </Switch>
+        </BrowserRouter>
+        <Footer lang={this.state.lang} />
       </div>
     )
   }

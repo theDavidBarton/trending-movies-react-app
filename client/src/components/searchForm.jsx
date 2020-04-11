@@ -52,7 +52,7 @@ class SearchForm extends Component {
           ))
         ) : (
           <li className='my-1 text-nowrap d-inline-block text-truncate result-list-width'>
-            <span className='mx-1'>no results found...</span>
+            <span className='mx-1'>{this.props.labels.inputNoresults[this.props.lang]}</span>
           </li>
         )}
       </Fragment>
@@ -82,7 +82,7 @@ class SearchForm extends Component {
           <input
             className='form-control mt-2'
             type='text'
-            placeholder='Type a movie name…'
+            placeholder={this.props.labels.inputPlaceholder[this.props.lang]}
             value={this.state.keyword}
             onChange={this.setKeywordInInput}
           />

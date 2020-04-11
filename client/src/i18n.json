@@ -1,0 +1,58 @@
+{
+  "cookieBar": {
+    "text": {
+      "en": "This page doesn't store cookies, but TMDb does. Check out <a class=\"text-success\" href=\"https://www.themoviedb.org/privacy-policy\">their cookie policy</a> to opt out!",
+      "sv": "Det sida lagrar inte cookie, men TMDb gör det. Kolla in <a class=\"text-success\" href=\"https://www.themoviedb.org/privacy-policy\"> deras cookie policy </a> att välja bort!"
+    }
+  },
+  "header": {
+    "inputLabel": {
+      "en": "browse The Movie Database",
+      "sv": "bläddra i The Movie Database"
+    },
+    "inputPlaceholder": {
+      "en": "Type a movie name…",
+      "sv": "Skriv ett filmnamn…"
+    },
+    "inputNoresults": {
+      "en": "no results found…",
+      "sv": "inga resultat funna…"
+    }
+  },
+  "footer": {
+    "text": {
+      "en": "Today these are the TOP9 trending movies on The Movie Database. This product uses the TMDb API but is not endorsed or certified by TMDb.",
+      "sv": "Idag är det dessa TOP 9 trendfilmer på filmdatabasen. Denna produkt använder TMDb API men är inte godkänd eller certifierad av TMDb."
+    }
+  },
+  "details": {
+    "as": {
+      "en": "as",
+      "sv": "som"
+    },
+    "overview": {
+      "en": "Overview:",
+      "sv": "Översikt:"
+    },
+    "creators": {
+      "en": "Creators:",
+      "sv": "Skapare:"
+    },
+    "facts": {
+      "en": "Facts:",
+      "sv": "Fakta:"
+    },
+    "cast": {
+      "en": "Cast:",
+      "sv": "Besättning:"
+    },
+    "showCast": {
+      "en": "Show full cast",
+      "sv": "Visa full besättning"
+    },
+    "hideCast": {
+      "en": "Hide full cast",
+      "sv": "Dölj full besättning"
+    }
+  }
+}

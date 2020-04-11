@@ -84,3 +84,10 @@
     transform: none;
   }
 }
+
+/* Misc. */
+.lang-position {
+  z-index: 10000;
+  right: 2%;
+  top: 50px;
+}
