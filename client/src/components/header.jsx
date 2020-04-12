@@ -57,7 +57,7 @@ class Header extends Component {
               <SearchForm lang={this.props.lang} labels={this.state.labels} />
               <h1 className='d-none d-md-block'>{this.state.labels.inputLabel[this.props.lang]}</h1>
             </div>
-            <div className='col-auto align-self-end my-2'>
+            <div className='col-auto align-self-end my-2 d-none d-lg-block'>
               <ul className='list-unstyled align-bottom social-list-margin'>
                 <li className='my-2'>
                   <a

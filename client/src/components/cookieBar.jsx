@@ -16,7 +16,7 @@ class CookieBar extends Component {
     return (
       <Fragment>
         {this.state.isOpened ? (
-          <div className='bg-warning sticky-top py-2'>
+          <div className='bg-warning fixed-bottom py-2'>
             <div className='container'>
               <span
                 dangerouslySetInnerHTML={{

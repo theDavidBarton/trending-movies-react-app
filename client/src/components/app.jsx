@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import { Route, Switch, BrowserRouter } from 'react-router-dom'
 import CookieBar from './cookieBar'
 import Header from './header'
@@ -6,47 +6,34 @@ import Footer from './footer'
 import HomepageWrapper from './homepageWrapper'
 import MovieDetailsWrapper from './movieDetailsWrapper'
 import Page404 from './404'
+import LangSelector from './langSelector'
 
-class App extends Component {
-  state = {
-    lang: 'en'
+export default function App() {
+  const [lang, setLang] = useState('en')
+
+  const swapLangEn = () => {
+    setLang('en')
+  }
+  const swapLangSv = () => {
+    setLang('sv')
   }
 
-  swapLangEn = () => {
-    this.setState({ lang: 'en' })
-  }
-  swapLangSv = () => {
-    this.setState({ lang: 'sv' })
-  }
-
-  render() {
-    return (
-      <div className='App'>
-        <nav className='position-absolute lang-position'>
-          <button
-            onClick={this.swapLangEn}
-            className={this.state.lang === 'en' ? 'btn btn-light' : 'btn btn-outline-light'}>
-            en
-          </button>{' '}
-          <button
-            onClick={this.swapLangSv}
-            className={this.state.lang === 'sv' ? 'btn btn-light' : 'btn btn-outline-light'}>
-            sv
-          </button>
-        </nav>
-        <CookieBar lang={this.state.lang} />
-        <Header lang={this.state.lang} />
-        <BrowserRouter>
-          <Switch>
-            <Route exact path='/' render={props => <HomepageWrapper {...props} lang={this.state.lang} />} />
-            <Route path='/movie/:id' render={props => <MovieDetailsWrapper {...props} lang={this.state.lang} />} />
-            <Route component={Page404} />
-          </Switch>
-        </BrowserRouter>
-        <Footer lang={this.state.lang} />
-      </div>
-    )
-  }
+  return (
+    <div className='App'>
+      <nav className='position-absolute lang-position'>
+        <LangSelector onClick={swapLangEn} lang={lang} currentLang='en' />{' '}
+        <LangSelector onClick={swapLangSv} lang={lang} currentLang='sv' />
+      </nav>
+      <CookieBar lang={lang} />
+      <Header lang={lang} />
+      <BrowserRouter>
+        <Switch>
+          <Route exact path='/' render={props => <HomepageWrapper {...props} lang={lang} />} />
+          <Route path='/movie/:id' render={props => <MovieDetailsWrapper {...props} lang={lang} />} />
+          <Route component={Page404} />
+        </Switch>
+      </BrowserRouter>
+      <Footer lang={lang} />
+    </div>
+  )
 }
-
-export default App
