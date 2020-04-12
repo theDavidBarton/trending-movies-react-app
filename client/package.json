@@ -7,7 +7,6 @@
   "dependencies": {
     "bootstrap": "4.3.1",
     "dompurify": "^2.0.8",
-    "eslint-plugin-react": "^7.14.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.1.2",
@@ -37,6 +36,7 @@
   },
   "proxy": "http://localhost:5000/",
   "devDependencies": {
+    "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^3.0.0"
   }
 }
