@@ -8,7 +8,7 @@
 /* 404, footer */
 .resized-logo {
   height: 100%;
-  width: 350px;
+  width: 280px;
 }
 
 /* header */
@@ -69,6 +69,7 @@
   height: 5rem;
 }
 .img-zoom-container {
+  border-radius: 70px;
   overflow: hidden;
 }
 .img-zoom img {
@@ -83,4 +84,11 @@
   .img-zoom:hover img {
     transform: none;
   }
+}
+
+/* Misc. */
+.lang-position {
+  z-index: 10000;
+  right: 2%;
+  top: 17px;
 }

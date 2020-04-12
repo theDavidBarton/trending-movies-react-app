@@ -3,11 +3,13 @@ import SearchForm from './searchForm'
 import logo from './../img/logo-big.svg'
 import github from './../img/github.svg'
 import linkedin from './../img/linkedin.png'
+import labels from './../i18n.json'
 
 class Header extends Component {
   state = {
     data: null,
-    dataIsReady: false
+    dataIsReady: false,
+    labels: labels.header
   }
 
   componentDidMount() {
@@ -52,10 +54,10 @@ class Header extends Component {
               </a>
             </div>
             <div className='col-md-auto col-12 align-self-end order-1 order-md-0'>
-              <SearchForm lang={this.props.lang} />
-              <h1 className='d-none d-md-block'>browse The Movie Database</h1>
+              <SearchForm lang={this.props.lang} labels={this.state.labels} />
+              <h1 className='d-none d-md-block'>{this.state.labels.inputLabel[this.props.lang]}</h1>
             </div>
-            <div className='col-auto align-self-end my-2'>
+            <div className='col-auto align-self-end my-2 d-none d-lg-block'>
               <ul className='list-unstyled align-bottom social-list-margin'>
                 <li className='my-2'>
                   <a

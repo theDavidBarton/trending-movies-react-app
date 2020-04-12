@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import labels from './../i18n.json'
 
 class MovieDetails extends Component {
   state = {
@@ -6,11 +7,18 @@ class MovieDetails extends Component {
     dataIsReady: false,
     id: this.props.selectedMovie,
     displayedCastMembers: 5,
-    fullCastIsOpened: false
+    fullCastIsOpened: false,
+    labels: labels.details
   }
 
   componentDidMount() {
     this.getTmdbApi()
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.lang !== prevProps.lang) {
+      this.getTmdbApi()
+    }
   }
 
   getTmdbApi = async () => {
@@ -157,7 +165,7 @@ class MovieDetails extends Component {
           )}
           <div className='media-body'>
             <h5 className='mt-0 mb-1'>{castMember.name}</h5>
-            as {castMember.character}
+            {this.state.labels.as[this.props.lang]} {castMember.character}
           </div>
         </li>
       </Fragment>
@@ -200,10 +208,10 @@ class MovieDetails extends Component {
               </div>
               <div className='col m-4'>
                 <div>
-                  <h4>Overview:</h4>
+                  <h4>{this.state.labels.overview[this.props.lang]}</h4>
                   <p className='mb-2'>{this.getOverview()}</p>
                 </div>
-                <h4>Creators:</h4>
+                <h4>{this.state.labels.creators[this.props.lang]}</h4>
                 <div className='row'>
                   <ul className='row list-unstyled list-group list-group-horizontal'>{this.getCrew()}</ul>
                 </div>
@@ -211,7 +219,7 @@ class MovieDetails extends Component {
             </div>
             <div className='row'>
               <div className='col-md-3 my-3'>
-                <h4>Facts:</h4>
+                <h4>{this.state.labels.facts[this.props.lang]}</h4>
                 {this.getCompanyLogos()}
                 <br />
                 <strong>Company:</strong> {this.getCompanies()}
@@ -226,15 +234,15 @@ class MovieDetails extends Component {
                 <br />
               </div>
               <div className='col my-3'>
-                <h4>Cast:</h4>
+                <h4>{this.state.labels.cast[this.props.lang]}</h4>
                 <ul className='list-unstyled'>{this.getCast()}</ul>
                 {!this.state.fullCastIsOpened ? (
                   <button className='btn btn-dark' onClick={this.setDisplayedCast}>
-                    Show full cast
+                    {this.state.labels.showCast[this.props.lang]}
                   </button>
                 ) : (
                   <button className='btn btn-dark' onClick={this.setBackDisplayedCast}>
-                    Hide full cast
+                    {this.state.labels.hideCast[this.props.lang]}
                   </button>
                 )}
               </div>
