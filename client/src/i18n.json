@@ -42,6 +42,30 @@
       "en": "Facts:",
       "sv": "Fakta:"
     },
+    "company": {
+      "en": "Company:",
+      "sv": "Företag:"
+    },
+    "duration": {
+      "en": "Duration:",
+      "sv": "Varaktighet:"
+    },
+    "mins": {
+      "en": "mins",
+      "sv": "minuter"
+    },
+    "genre": {
+      "en": "Genre:",
+      "sv": "Genre:"
+    },
+    "release": {
+      "en": "Release:",
+      "sv": "Frigöra:"
+    },
+    "voted": {
+      "en": "Voted:",
+      "sv": "Röstade:"
+    },
     "cast": {
       "en": "Cast:",
       "sv": "Besättning:"
