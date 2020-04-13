@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Route, Switch, BrowserRouter } from 'react-router-dom'
+import { Route, Switch, BrowserRouter, Redirect } from 'react-router-dom'
 import CookieBar from './cookieBar'
 import Header from './header'
 import Footer from './footer'
@@ -7,29 +7,26 @@ import HomepageWrapper from './homepageWrapper'
 import MovieDetailsWrapper from './movieDetailsWrapper'
 import Page404 from './404'
 import LangSelector from './langSelector'
+import urlParamFinder from './../lib/urlParamFinder'
 
 export default function App() {
-  const [lang, setLang] = useState('en')
-
-  const swapLangEn = () => {
-    setLang('en')
-  }
-  const swapLangSv = () => {
-    setLang('sv')
-  }
+  const [lang] = useState(urlParamFinder() || 'en')
 
   return (
     <div className='App'>
       <nav className='position-absolute lang-position'>
-        <LangSelector onClick={swapLangEn} lang={lang} currentLang='en' />{' '}
-        <LangSelector onClick={swapLangSv} lang={lang} currentLang='sv' />
+        <LangSelector lang={lang} currentLang='en' /> <LangSelector lang={lang} currentLang='sv' />
       </nav>
       <CookieBar lang={lang} />
       <Header lang={lang} />
       <BrowserRouter>
         <Switch>
-          <Route exact path='/' render={props => <HomepageWrapper {...props} lang={lang} />} />
-          <Route path='/movie/:id' render={props => <MovieDetailsWrapper {...props} lang={lang} />} />
+          <Route exact path='/:lang' render={props => <HomepageWrapper {...props} lang={props.match.params.lang} />} />
+          <Redirect exact from='/' to={`/${lang}`} />
+          <Route
+            path='/:lang/movie/:id'
+            render={props => <MovieDetailsWrapper {...props} lang={props.match.params.lang} />}
+          />
           <Route component={Page404} />
         </Switch>
       </BrowserRouter>

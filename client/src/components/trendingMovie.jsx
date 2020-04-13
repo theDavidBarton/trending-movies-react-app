@@ -38,7 +38,7 @@ class TrendingMovie extends Component {
   }
 
   selectedMovie = () => {
-    const movie = `/movie/${this.state.response.results[this.state.value].id}`
+    const movie = `/${this.props.lang}/movie/${this.state.response.results[this.state.value].id}`
     return movie
   }
 

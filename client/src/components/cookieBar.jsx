@@ -1,36 +1,30 @@
-import React, { Component, Fragment } from 'react'
+import React, { useState, Fragment } from 'react'
 import dompurify from 'dompurify'
-import labels from './../i18n.json'
+import label from './../i18n.json'
 
-class CookieBar extends Component {
-  state = {
-    isOpened: true,
-    labels: labels.cookieBar
+export default function CookieBar(props) {
+  const [labels] = useState(label.cookieBar)
+  const [isOpened, setIsOpened] = useState(true)
+
+  const closeIt = () => {
+    setIsOpened(false)
   }
 
-  closeIt = () => {
-    this.setState({ isOpened: false })
-  }
-
-  render() {
-    return (
-      <Fragment>
-        {this.state.isOpened ? (
-          <div className='bg-warning fixed-bottom py-2'>
-            <div className='container'>
-              <span
-                dangerouslySetInnerHTML={{
-                  __html: dompurify.sanitize(this.state.labels.text[this.props.lang])
-                }}></span>
-              <button onClick={this.closeIt} type='button' className='close' aria-label='Close'>
-                <span aria-hidden='true'>&times;</span>
-              </button>
-            </div>
+  return (
+    <Fragment>
+      {isOpened ? (
+        <div className='bg-warning fixed-bottom py-2'>
+          <div className='container'>
+            <span
+              dangerouslySetInnerHTML={{
+                __html: dompurify.sanitize(labels.text[props.lang])
+              }}></span>
+            <button onClick={closeIt} type='button' className='float-right btn btn-dark btn-sm' aria-label='Close'>
+              <span>OK</span>
+            </button>
           </div>
-        ) : null}
-      </Fragment>
-    )
-  }
+        </div>
+      ) : null}
+    </Fragment>
+  )
 }
-
-export default CookieBar

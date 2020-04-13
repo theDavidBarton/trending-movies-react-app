@@ -222,15 +222,16 @@ class MovieDetails extends Component {
                 <h4>{this.state.labels.facts[this.props.lang]}</h4>
                 {this.getCompanyLogos()}
                 <br />
-                <strong>Company:</strong> {this.getCompanies()}
+                <strong>{this.state.labels.company[this.props.lang]}</strong> {this.getCompanies()}
                 <br />
-                <strong>Duration:</strong> {this.getRuntime()} mins
+                <strong>{this.state.labels.duration[this.props.lang]}</strong> {this.getRuntime()}{' '}
+                {this.state.labels.mins[this.props.lang]}
                 <br />
-                <strong>Genre:</strong> {this.getGenres()}
+                <strong>{this.state.labels.genre[this.props.lang]}</strong> {this.getGenres()}
                 <br />
-                <strong>Release:</strong> {this.getReleaseDate()}
+                <strong>{this.state.labels.release[this.props.lang]}</strong> {this.getReleaseDate()}
                 <br />
-                <strong>Voted:</strong> ★{this.getVotes()}/10
+                <strong>{this.state.labels.voted[this.props.lang]}</strong> ★{this.getVotes()}/10
                 <br />
               </div>
               <div className='col my-3'>
