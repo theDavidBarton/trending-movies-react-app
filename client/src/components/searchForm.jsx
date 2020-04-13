@@ -30,7 +30,7 @@ class SearchForm extends Component {
       <Fragment>
         {this.state.data.total_results >= 1 ? (
           this.state.data.results.slice(0, 5).map(result => (
-            <a key={result.id + 'a'} href={`/movie/${result.id}`} className='text-decoration-none'>
+            <a key={result.id + 'a'} href={`/${this.props.lang}/movie/${result.id}`} className='text-decoration-none'>
               <li key={result.id + 'li'} className='my-1 text-nowrap d-inline-block text-truncate result-list-width'>
                 {result.poster_path ? (
                   <img

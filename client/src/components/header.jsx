@@ -49,7 +49,7 @@ class Header extends Component {
         <div className='container text-white'>
           <div className='row justify-content-md-center'>
             <div className='col'>
-              <a href='/'>
+              <a href={`/${this.props.lang}`}>
                 <img className='img-fluid text-center resized-logo' src={logo} alt='logo' />
               </a>
             </div>
