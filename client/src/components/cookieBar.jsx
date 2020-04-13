@@ -1,9 +1,9 @@
 import React, { useState, Fragment } from 'react'
 import dompurify from 'dompurify'
-import label from './../i18n.json'
+import i18n from './../i18n.json'
 
 export default function CookieBar(props) {
-  const [labels] = useState(label.cookieBar)
+  const [labels] = useState(i18n.cookieBar)
   const [isOpened, setIsOpened] = useState(true)
 
   const closeIt = () => {

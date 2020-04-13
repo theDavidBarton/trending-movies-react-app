@@ -19,6 +19,16 @@
       "sv": "inga resultat funna…"
     }
   },
+  "homepageHeadingBox": {
+    "heading": {
+      "en": "Trending TOP9 today",
+      "sv": "Trend<wbr>filmer TOP 9 idag"
+    },
+    "warning": {
+      "en": "📽 Today these are the TOP9 trending movies on The Movie Database. This product uses the TMDb API but is not endorsed or certified by TMDb.",
+      "sv": "📽 Idag är det dessa TOP 9 trendfilmer på filmdatabasen. Denna produkt använder TMDb API men är inte godkänd eller certifierad av TMDb."
+    }
+  },
   "footer": {
     "text": {
       "en": "Today these are the TOP9 trending movies on The Movie Database. This product uses the TMDb API but is not endorsed or certified by TMDb.",

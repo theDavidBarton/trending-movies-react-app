@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import TrendingMovieList from './trendingMovieList'
+import HomepageHeadingBox from './homepageHeadingBox'
 
 class HomepageWrapper extends Component {
   state = {
@@ -28,7 +29,12 @@ class HomepageWrapper extends Component {
   }
 
   render() {
-    return <TrendingMovieList lang={this.props.lang} data={this.state.data} dataIsReady={this.state.dataIsReady} />
+    return (
+      <Fragment>
+        <HomepageHeadingBox lang={this.props.lang} />
+        <TrendingMovieList lang={this.props.lang} data={this.state.data} dataIsReady={this.state.dataIsReady} />
+      </Fragment>
+    )
   }
 }
 
