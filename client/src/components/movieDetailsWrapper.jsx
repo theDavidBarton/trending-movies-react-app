@@ -1,20 +1,8 @@
-import React, { Component, Fragment } from 'react'
+import React, { useState, Fragment } from 'react'
 import MovieDetails from './movieDetails'
 
-class MovieDetailsWrapper extends Component {
-  state = {
-    selectedMovie: this.props.match.params.id
-  }
+export default function MovieDetailsWrapper(props) {
+  const selectedMovie = useState(props.match.params.id)
 
-  render() {
-    return (
-      <Fragment>
-        {this.state.selectedMovie ? (
-          <MovieDetails lang={this.props.lang} selectedMovie={this.state.selectedMovie} />
-        ) : null}
-      </Fragment>
-    )
-  }
+  return <Fragment>{selectedMovie ? <MovieDetails lang={props.lang} selectedMovie={selectedMovie} /> : null}</Fragment>
 }
-
-export default MovieDetailsWrapper
