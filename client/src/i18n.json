@@ -2,91 +2,111 @@
   "cookieBar": {
     "text": {
       "en": "This page doesn't store cookies, but TMDb does. Check out <a class=\"text-success\" href=\"https://www.themoviedb.org/privacy-policy\">their cookie policy</a> to opt out!",
-      "sv": "Det sida lagrar inte cookie, men TMDb gör det. Kolla in <a class=\"text-success\" href=\"https://www.themoviedb.org/privacy-policy\"> deras cookie policy </a> att välja bort!"
+      "sv": "Det sida lagrar inte cookie, men TMDb gör det. Kolla in <a class=\"text-success\" href=\"https://www.themoviedb.org/privacy-policy\">deras cookie policy </a> att välja bort!",
+      "hu": "Az oldal nem tárol cookie-kat, de a TMDb igen. Látogassad meg <a class=\"text-success\" href=\"https://www.themoviedb.org/privacy-policy\">cookie policy-jukat </a> hogy megismejed a lehetőségeidet!"
     }
   },
   "header": {
     "inputLabel": {
       "en": "browse The Movie Database",
-      "sv": "bläddra i The Movie Database"
+      "sv": "bläddra i The Movie Database",
+      "hu": "keress a The Movie Database-ben"
     },
     "inputPlaceholder": {
       "en": "Type a movie name…",
-      "sv": "Skriv ett filmnamn…"
+      "sv": "Skriv ett filmnamn…",
+      "hu": "Írj be egy filmcímet…"
     },
     "inputNoresults": {
       "en": "no results found…",
-      "sv": "inga resultat funna…"
+      "sv": "inga resultat funna…",
+      "hu": "nincs találat…"
     }
   },
   "homepageHeadingBox": {
     "heading": {
       "en": "Trending TOP9 today",
-      "sv": "Trend<wbr>filmer TOP 9 idag"
+      "sv": "Trend<wbr>filmer TOP 9 idag",
+      "hu": "A mai TOP9"
     },
     "warning": {
-      "en": "📽 Today these are the TOP9 trending movies on The Movie Database. This product uses the TMDb API but is not endorsed or certified by TMDb.",
-      "sv": "📽 Idag är det dessa TOP 9 trendfilmer på filmdatabasen. Denna produkt använder TMDb API men är inte godkänd eller certifierad av TMDb."
+      "en": "🛈 Today these are the TOP9 trending movies on The Movie Database. This product uses the TMDb API but is not endorsed or certified by TMDb.",
+      "sv": "🛈 Idag är det dessa TOP 9 trendfilmer på filmdatabasen. Denna produkt använder TMDb API men är inte godkänd eller certifierad av TMDb.",
+      "hu": "🛈 Ma ez a TOP9 mozifilm a TMDb adatbázisában. Ez a termék a TMDb api-ját használja, de nem a TMDb jóváhagyásavál vagy hitelesítésével kerül publikálásra."
     }
   },
   "footer": {
     "text": {
       "en": "Today these are the TOP9 trending movies on The Movie Database. This product uses the TMDb API but is not endorsed or certified by TMDb.",
-      "sv": "Idag är det dessa TOP 9 trendfilmer på filmdatabasen. Denna produkt använder TMDb API men är inte godkänd eller certifierad av TMDb."
+      "sv": "Idag är det dessa TOP 9 trendfilmer på filmdatabasen. Denna produkt använder TMDb API men är inte godkänd eller certifierad av TMDb.",
+      "hu": "Ez a termék a TMDb api-ját használja, de nem a TMDb jóváhagyásavál vagy hitelesítésével kerül publikálásra."
     }
   },
   "details": {
     "as": {
       "en": "as",
-      "sv": "som"
+      "sv": "som",
+      "hu": "mint"
     },
     "overview": {
       "en": "Overview:",
-      "sv": "Översikt:"
+      "sv": "Översikt:",
+      "hu": "Leírás:"
     },
     "creators": {
       "en": "Creators:",
-      "sv": "Skapare:"
+      "sv": "Skapare:",
+      "hu": "Készítők:"
     },
     "facts": {
       "en": "Facts:",
-      "sv": "Fakta:"
+      "sv": "Fakta:",
+      "hu": "Adatok:"
     },
     "company": {
       "en": "Company:",
-      "sv": "Företag:"
+      "sv": "Företag:",
+      "hu": "Stúdiók:"
     },
     "duration": {
       "en": "Duration:",
-      "sv": "Varaktighet:"
+      "sv": "Varaktighet:",
+      "hu": "Hossz:"
     },
     "mins": {
       "en": "mins",
-      "sv": "minuter"
+      "sv": "minuter",
+      "hu": "perc"
     },
     "genre": {
       "en": "Genre:",
-      "sv": "Genre:"
+      "sv": "Genre:",
+      "hu": "Műfaj:"
     },
     "release": {
       "en": "Release:",
-      "sv": "Frigöra:"
+      "sv": "Frigöra:",
+      "hu": "Megjelenés:"
     },
     "voted": {
       "en": "Voted:",
-      "sv": "Röstade:"
+      "sv": "Röstade:",
+      "hu": "Szavazatok:"
     },
     "cast": {
       "en": "Cast:",
-      "sv": "Besättning:"
+      "sv": "Besättning:",
+      "hu": "Stáb:"
     },
     "showCast": {
       "en": "Show full cast",
-      "sv": "Visa full besättning"
+      "sv": "Visa full besättning",
+      "hu": "Teljes stáb mutatása"
     },
     "hideCast": {
       "en": "Hide full cast",
-      "sv": "Dölj full besättning"
+      "sv": "Dölj full besättning",
+      "hu": "Teljes stáb elrejtése"
     }
   }
 }
