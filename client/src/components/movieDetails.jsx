@@ -23,8 +23,10 @@ class MovieDetails extends Component {
 
   getTmdbApi = async () => {
     try {
-      const response = await fetch(`/api/${this.props.lang}/movieDetails/${this.state.id}`)
+      const response = await fetch(`/api/${this.props.lang}/movieDetails/${this.state.id[0]}`)
       const json = await response.json()
+      // issue: #83; docs: https://www.themoviedb.org/documentation/api/status-codes
+      if (json.status_code > 1) throw new Error('The resource you requested could not be found.')
       this.setState({ data: json, dataIsReady: true })
     } catch (e) {
       console.error(e)
@@ -183,9 +185,7 @@ class MovieDetails extends Component {
 
   render() {
     let bgImage = this.state.dataIsReady
-      ? 'linear-gradient(rgba(52,58,64,.6), rgba(52,58,64,.6)), url(https://image.tmdb.org/t/p/w1280' +
-        this.getBackground() +
-        ')'
+      ? 'linear-gradient(rgba(52,58,64,.6), rgba(52,58,64,.6)), url(https://image.tmdb.org/t/p/w1280' + this.getBackground() + ')'
       : 'url(data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==)'
     return (
       <Fragment>
