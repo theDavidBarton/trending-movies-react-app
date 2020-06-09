@@ -1,41 +1,32 @@
-import React, { Component, Fragment } from 'react'
+import React, { useState, useEffect, Fragment, useCallback } from 'react'
+import { useParams } from 'react-router-dom'
 import TrendingMovieList from './trendingMovieList'
 import HomepageHeadingBox from './homepageHeadingBox'
 
-class HomepageWrapper extends Component {
-  state = {
-    data: null,
-    dataIsReady: false
-  }
+export default function HomepageWrapper() {
+  const [data, setData] = useState(null)
+  const [dataIsReady, setDataIsReady] = useState(false)
+  const { lang } = useParams()
 
-  componentDidMount() {
-    this.getTmdbApi()
-  }
-
-  componentDidUpdate(prevProps) {
-    if (this.props.lang !== prevProps.lang) {
-      this.getTmdbApi()
-    }
-  }
-
-  getTmdbApi = async () => {
+  const getTmdbApi = useCallback(async () => {
     try {
-      const response = await fetch(`/api/${this.props.lang}/trending`)
+      const response = await fetch(`/api/${lang}/trending`)
       const json = await response.json()
-      this.setState({ data: json, dataIsReady: true })
+      setData(json)
+      setDataIsReady(true)
     } catch (e) {
       console.error(e)
     }
-  }
+  }, [lang])
 
-  render() {
-    return (
-      <Fragment>
-        <HomepageHeadingBox lang={this.props.lang} />
-        <TrendingMovieList lang={this.props.lang} data={this.state.data} dataIsReady={this.state.dataIsReady} />
-      </Fragment>
-    )
-  }
+  useEffect(() => {
+    getTmdbApi()
+  }, [lang, getTmdbApi])
+
+  return (
+    <Fragment>
+      <HomepageHeadingBox lang={lang} />
+      <TrendingMovieList lang={lang} data={data} dataIsReady={dataIsReady} />
+    </Fragment>
+  )
 }
-
-export default HomepageWrapper

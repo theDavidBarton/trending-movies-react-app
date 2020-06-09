@@ -30,9 +30,9 @@
       "hu": "A mai TOP9"
     },
     "warning": {
-      "en": "🛈 Today these are the TOP9 trending movies on The Movie Database. This product uses the TMDb API but is not endorsed or certified by TMDb.",
-      "sv": "🛈 Idag är det dessa TOP 9 trendfilmer på filmdatabasen. Denna produkt använder TMDb API men är inte godkänd eller certifierad av TMDb.",
-      "hu": "🛈 Ma ez a TOP9 mozifilm a TMDb adatbázisában. Ez a termék a TMDb api-ját használja, de nem a TMDb jóváhagyásavál vagy hitelesítésével kerül publikálásra."
+      "en": "Today these are the TOP9 trending movies on The Movie Database. This product uses the TMDb API but is not endorsed or certified by TMDb.",
+      "sv": "Idag är det dessa TOP 9 trendfilmer på filmdatabasen. Denna produkt använder TMDb API men är inte godkänd eller certifierad av TMDb.",
+      "hu": "Ma ez a TOP9 mozifilm a TMDb adatbázisában. Ez a termék a TMDb api-ját használja, de nem a TMDb jóváhagyásavál vagy hitelesítésével kerül publikálásra."
     }
   },
   "footer": {

@@ -88,6 +88,7 @@
 
 /* Misc. */
 .lang-position {
+  position: absolute;
   z-index: 10000;
   right: 2%;
   top: 17px;

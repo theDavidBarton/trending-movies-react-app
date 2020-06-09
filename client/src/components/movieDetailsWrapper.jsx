@@ -1,8 +1,8 @@
-import React, { useState, Fragment } from 'react'
+import React, { Fragment } from 'react'
+import { useParams } from 'react-router-dom'
 import MovieDetails from './movieDetails'
 
-export default function MovieDetailsWrapper(props) {
-  const selectedMovie = useState(props.match.params.id)
-
-  return <Fragment>{selectedMovie ? <MovieDetails lang={props.lang} selectedMovie={selectedMovie} /> : null}</Fragment>
+export default function MovieDetailsWrapper() {
+  const { id, lang } = useParams()
+  return <Fragment>{id ? <MovieDetails lang={lang} selectedMovie={id} /> : null}</Fragment>
 }
