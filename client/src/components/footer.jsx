@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import logoDark from './../img/logo-big-dark.svg'
 import i18n from './../i18n.json'
 
-export default function Footer(props) {
+export default function Footer({ lang }) {
   const [labels] = useState(i18n.footer)
 
   return (
@@ -14,7 +14,7 @@ export default function Footer(props) {
             <p className='text-center mt-2'>copyright © 2019 theDavidBarton</p>
           </div>
           <div className='col align-self-end'>
-            <p className='lead'>{labels.text[props.lang]}</p>
+            <p className='lead'>{labels.text[lang]}</p>
             <p>
               <span className='badge badge-success'>#TMDb</span> <span className='badge badge-warning'>#trending</span>{' '}
               <span className='badge badge-light'>#ReactJS</span> <span className='badge badge-danger'>#bootstrap</span>

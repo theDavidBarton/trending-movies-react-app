@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import TrendingMovie from './trendingMovie'
 import TrendingMovieSkeletonLoading from './trendingMovieSkeletonLoading'
 
-export default function TrendingMovieList(props) {
+export default function TrendingMovieList({ lang, data, dataIsReady }) {
   const [topMovieCount] = useState([
     { id: 1, value: 0 },
     { id: 2, value: 1 },
@@ -17,25 +17,19 @@ export default function TrendingMovieList(props) {
 
   return (
     <div className='bg-dark py-2'>
-      {props.dataIsReady ? (
+      {dataIsReady ? (
         <div className='container'>
           <div className='row'>
-            {topMovieCount.map(movies => (
-              <TrendingMovie
-                lang={props.lang}
-                key={movies.id}
-                value={movies.value}
-                data={props.data}
-                selectedMovie={props.selectedMovie}
-              />
+            {topMovieCount.map(movie => (
+              <TrendingMovie lang={lang} key={movie.id} value={movie.value} data={data} />
             ))}
           </div>
         </div>
       ) : (
         <div className='container'>
           <div className='row'>
-            {topMovieCount.map(movies => (
-              <TrendingMovieSkeletonLoading key={movies.id} />
+            {topMovieCount.map(movie => (
+              <TrendingMovieSkeletonLoading key={movie.id} />
             ))}
           </div>
         </div>

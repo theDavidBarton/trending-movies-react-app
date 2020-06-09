@@ -14,19 +14,16 @@ export default function App() {
 
   return (
     <div className='App'>
-      <nav className='position-absolute lang-position'>
+      <nav className='lang-position'>
         <LangSelector lang={lang} currentLang='en' /> <LangSelector lang={lang} currentLang='sv' />
       </nav>
       <CookieBar lang={lang} />
       <Header lang={lang} />
       <BrowserRouter>
         <Switch>
-          <Route exact path='/:lang' render={props => <HomepageWrapper {...props} lang={props.match.params.lang} />} />
+          <Route exact path='/:lang' component={HomepageWrapper} />
           <Redirect exact from='/' to={`/${lang}`} />
-          <Route
-            path='/:lang/movie/:id'
-            render={props => <MovieDetailsWrapper {...props} lang={props.match.params.lang} />}
-          />
+          <Route path='/:lang/movie/:id' component={MovieDetailsWrapper} />
           <Route component={Page404} />
         </Switch>
       </BrowserRouter>

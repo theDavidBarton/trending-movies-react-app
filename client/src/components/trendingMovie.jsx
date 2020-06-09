@@ -1,39 +1,34 @@
 import React from 'react'
 
-export default function TrendingMovie(props) {
+export default function TrendingMovie({ lang, value, data }) {
   const getPoster = () => {
-    const poster = 'https://image.tmdb.org/t/p/w342' + props.data.results[props.value].poster_path
+    const poster = 'https://image.tmdb.org/t/p/w342' + data.results[value].poster_path
     return poster
   }
 
   const getTitle = () => {
-    const title = props.data.results[props.value].title
+    const title = data.results[value].title
     return title
   }
 
   const getOverview = () => {
-    const overview = props.data.results[props.value].overview
+    const overview = data.results[value].overview
     return overview
   }
 
   const getRating = () => {
-    const rating = props.data.results[props.value].vote_average
+    const rating = data.results[value].vote_average
     return rating
   }
 
   const getRank = () => {
-    const rank = props.value + 1
+    const rank = value + 1
     return rank
-  }
-
-  const selectedMovie = () => {
-    const movie = `/${props.lang}/movie/${props.data.results[props.value].id}`
-    return movie
   }
 
   return (
     <div className='col-md-4'>
-      <a href={selectedMovie()} className='text-decoration-none'>
+      <a href={`/${lang}/movie/${data.results[value].id}`} className='text-decoration-none'>
         <div className='card bg-dark text-white border-0'>
           <div>
             <div className='img-zoom-container'>
