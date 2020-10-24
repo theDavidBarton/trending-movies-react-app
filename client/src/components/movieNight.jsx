@@ -24,7 +24,6 @@ export default function MovieNight({ selectedPoll, lang }) {
 
   const log = () => {
     console.log(data)
-    console.log(movies)
   }
 
   return (
