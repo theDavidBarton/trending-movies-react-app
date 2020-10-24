@@ -5,6 +5,7 @@ import Header from './header'
 import Footer from './footer'
 import HomepageWrapper from './homepageWrapper'
 import MovieDetailsWrapper from './movieDetailsWrapper'
+import MovieNightWrapper from './movieNightWrapper'
 import Page404 from './404'
 import LangSelector from './langSelector'
 import urlParamFinder from './../lib/urlParamFinder'
@@ -24,6 +25,7 @@ export default function App() {
           <Route exact path='/:lang' component={HomepageWrapper} />
           <Redirect exact from='/' to={`/${lang}`} />
           <Route path='/:lang/movie/:id' component={MovieDetailsWrapper} />
+          <Route path='/:lang/movienight/:id' component={MovieNightWrapper} />
           <Route component={Page404} />
         </Switch>
       </BrowserRouter>

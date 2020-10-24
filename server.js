@@ -3,6 +3,7 @@
 const express = require('express')
 const request = require('request')
 const path = require('path')
+const { mongoDbSearch, mongoDbCreate } = require('./lib/mongoUtils')
 const tmdbApiKey = process.env.TMDB_API_KEY
 
 const optionsTrending = {
@@ -46,15 +47,13 @@ const optionsMovieAutocomplete = {
 
 let parsedResult
 
-tmdbApiKey
-  ? console.log('TMDb api key is found')
-  : console.log('TMDb api key is NOT found among environment variables!')
+tmdbApiKey ? console.log('TMDb api key is found') : console.log('TMDb api key is NOT found among environment variables!')
 
 async function apiCall(options) {
   // (I.) promise to return the parsedResult for processing
   function tmdbRequest() {
-    return new Promise(function(resolve, reject) {
-      request(options, function(error, response, body) {
+    return new Promise((resolve, reject) => {
+      request(options, (error, response, body) => {
         try {
           resolve(JSON.parse(body))
         } catch (e) {
@@ -81,7 +80,7 @@ function endpointCreation() {
     app.use(express.static(path.join(__dirname, 'client/build')))
     // required to serve SPA on heroku production without routing problems; it will skip only 'api' calls
     if (process.env.NODE_ENV === 'production') {
-      app.get(/^((?!(api)).)*$/, function(req, res) {
+      app.get(/^((?!(api)).)*$/, (req, res) => {
         res.sendFile(path.join(__dirname, 'client/build', 'index.html'))
       })
     }
@@ -123,6 +122,20 @@ function endpointCreation() {
       optionsMovieAutocomplete.qs.query = query
       res.json(await apiCall(optionsMovieAutocomplete))
       console.log(`/api/${lang}/movieAutocomplete?q=${query} endpoint has been called!`)
+    })
+
+    app.get('/api/:lang/movieNight/:pollId', async (req, res) => {
+      const pollId = req.params.pollId
+      const lang = req.params.lang
+      res.json(await mongoDbSearch(pollId))
+      console.log(`/api/${lang}/movieNight/${pollId} endpoint has been called!`)
+    })
+
+    app.post('/api/:lang/movieNightAddNew/:pollId', async (req, res) => {
+      const pollId = req.params.pollId
+      const lang = req.params.lang
+      res.json(await mongoDbCreate(req.body))
+      console.log(`/api/${lang}/movieNightAddNew/${pollId} endpoint has been called!`)
     })
 
     app.listen(port)
