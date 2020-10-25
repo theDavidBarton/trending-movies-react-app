@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Fragment } from 'react'
 import SearchDropdownItem, { SearchDropdownItemNoResult } from './searchDropdownItem'
 
-export default function SearchForm({ lang, labels }) {
+export default function SearchForm({ lang, labels, pollId }) {
   const [data, setData] = useState(null)
   const [dataIsReady, setDataIsReady] = useState(false)
   const [dropdownIsopened, setDropdownIsopened] = useState(false)
@@ -50,7 +50,9 @@ export default function SearchForm({ lang, labels }) {
                 <ul className='list-unstyled mb-0'>
                   {data.total_results >= 1 ? (
                     // only first eight search results displayed in the dropdown
-                    data.results.slice(0, 5).map(result => <SearchDropdownItem key={result.id} result={result} lang={lang} />)
+                    data.results
+                      .slice(0, 5)
+                      .map(result => <SearchDropdownItem key={result.id} result={result} lang={lang} pollId={pollId} />)
                   ) : (
                     <SearchDropdownItemNoResult lang={lang} />
                   )}

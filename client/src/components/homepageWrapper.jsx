@@ -2,11 +2,13 @@ import React, { useState, useEffect, Fragment, useCallback } from 'react'
 import { useParams } from 'react-router-dom'
 import TrendingMovieList from './trendingMovieList'
 import HomepageHeadingBox from './homepageHeadingBox'
+import pollParamFinder from './../lib/pollParamFinder'
 
 export default function HomepageWrapper() {
   const [data, setData] = useState(null)
   const [dataIsReady, setDataIsReady] = useState(false)
   const { lang } = useParams()
+  const [pollId] = useState(pollParamFinder() || null)
 
   const getTmdbApi = useCallback(async () => {
     try {
@@ -26,7 +28,7 @@ export default function HomepageWrapper() {
   return (
     <Fragment>
       <HomepageHeadingBox lang={lang} />
-      <TrendingMovieList lang={lang} data={data} dataIsReady={dataIsReady} />
+      <TrendingMovieList lang={lang} data={data} dataIsReady={dataIsReady} pollId={pollId} />
     </Fragment>
   )
 }

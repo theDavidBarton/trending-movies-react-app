@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function TrendingMovie({ lang, value, data }) {
+export default function TrendingMovie({ lang, value, data, pollId }) {
   const getPoster = () => {
     const poster = 'https://image.tmdb.org/t/p/w342' + data.results[value].poster_path
     return poster
@@ -28,7 +28,7 @@ export default function TrendingMovie({ lang, value, data }) {
 
   return (
     <div className='col-md-4'>
-      <a href={`/${lang}/movie/${data.results[value].id}`} className='text-decoration-none'>
+      <a href={`/${lang}/movie/${data.results[value].id}${pollId ? `?poll=${pollId}` : ''}`} className='text-decoration-none'>
         <div className='card bg-dark text-white border-0'>
           <div>
             <div className='img-zoom-container'>

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import TrendingMovie from './trendingMovie'
 import TrendingMovieSkeletonLoading from './trendingMovieSkeletonLoading'
 
-export default function TrendingMovieList({ lang, data, dataIsReady }) {
+export default function TrendingMovieList({ lang, data, dataIsReady, pollId }) {
   const [topMovieCount] = useState([
     { id: 1, value: 0 },
     { id: 2, value: 1 },
@@ -21,7 +21,7 @@ export default function TrendingMovieList({ lang, data, dataIsReady }) {
         <div className='container'>
           <div className='row'>
             {topMovieCount.map(movie => (
-              <TrendingMovie lang={lang} key={movie.id} value={movie.value} data={data} />
+              <TrendingMovie lang={lang} key={movie.id} value={movie.value} data={data} pollId={pollId} />
             ))}
           </div>
         </div>

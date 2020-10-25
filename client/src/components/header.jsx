@@ -5,7 +5,7 @@ import github from './../img/github.svg'
 import linkedin from './../img/linkedin.png'
 import i18n from './../i18n.json'
 
-export default function Header({ lang }) {
+export default function Header({ lang, pollId }) {
   const [data, setData] = useState(null)
   const [dataIsReady, setDataIsReady] = useState(false)
   const [labels] = useState(i18n.header)
@@ -47,12 +47,12 @@ export default function Header({ lang }) {
       <div className='container text-white'>
         <div className='row justify-content-md-center'>
           <div className='col'>
-            <a href={`/${lang}`}>
+            <a href={`/${lang}${pollId ? `?poll=${pollId}` : ''}`}>
               <img className='img-fluid text-center resized-logo' src={logo} alt='logo' />
             </a>
           </div>
           <div className='col-md-auto col-12 align-self-end order-1 order-md-0'>
-            <SearchForm lang={lang} labels={labels} />
+            <SearchForm lang={lang} labels={labels} pollId={pollId} />
             <h1 className='d-none d-md-block'>{labels.inputLabel[lang]}</h1>
           </div>
           <div className='col-auto align-self-end my-2 d-none d-lg-block'>

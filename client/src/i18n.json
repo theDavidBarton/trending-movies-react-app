@@ -6,6 +6,13 @@
       "hu": "Az oldal nem tárol cookie-kat, de a TMDb igen. Látogassad meg <a class=\"text-success\" href=\"https://www.themoviedb.org/privacy-policy\">cookie policy-jukat </a> hogy megismejed a lehetőségeidet!"
     }
   },
+  "pollBar": {
+    "text": {
+      "en": "You are editing this Poll:",
+      "sv": "Du redigerar den här omröstningen:",
+      "hu": "Ezt a szavazást szerkeszted:"
+    }
+  },
   "header": {
     "inputLabel": {
       "en": "browse The Movie Database",

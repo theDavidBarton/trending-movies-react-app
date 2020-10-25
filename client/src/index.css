@@ -93,3 +93,14 @@
   right: 2%;
   top: 17px;
 }
+
+/* Movie Night */
+.poll-votes {
+  font-size: 3rem;
+  background-color: var(--warning);
+  padding: 1rem;
+}
+
+.smaller {
+  font-size: 0.8rem;
+}

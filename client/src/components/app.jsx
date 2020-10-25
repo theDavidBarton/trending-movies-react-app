@@ -9,17 +9,22 @@ import MovieNightWrapper from './movieNightWrapper'
 import Page404 from './404'
 import LangSelector from './langSelector'
 import urlParamFinder from './../lib/urlParamFinder'
+import pollParamFinder from './../lib/pollParamFinder'
+import MovieNightBar from './movieNightBar'
 
 export default function App() {
   const [lang] = useState(urlParamFinder() || 'en')
+  const [pollId] = useState(pollParamFinder() || null)
 
   return (
     <div className='App'>
       <nav className='lang-position'>
-        <LangSelector lang={lang} currentLang='en' /> <LangSelector lang={lang} currentLang='sv' />
+        <LangSelector lang={lang} currentLang='en' pollId={pollId} />{' '}
+        <LangSelector lang={lang} currentLang='sv' pollId={pollId} />
       </nav>
+      <MovieNightBar lang={lang} pollId={pollId} />
       <CookieBar lang={lang} />
-      <Header lang={lang} />
+      <Header lang={lang} pollId={pollId} />
       <BrowserRouter>
         <Switch>
           <Route exact path='/:lang' component={HomepageWrapper} />

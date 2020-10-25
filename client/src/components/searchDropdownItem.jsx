@@ -1,10 +1,13 @@
 import React, { useState, Fragment } from 'react'
 import i18n from './../i18n.json'
 
-export default function SearchDropdownItem({ result, lang }) {
+export default function SearchDropdownItem({ result, lang, pollId }) {
   return (
     <Fragment>
-      <a key={result.id + 'a'} href={`/${lang}/movie/${result.id}`} className='text-decoration-none'>
+      <a
+        key={result.id + 'a'}
+        href={`/${lang}/movie/${result.id}${pollId ? `?poll=${pollId}` : ''}`}
+        className='text-decoration-none'>
         <li key={result.id + 'li'} className='my-1 text-nowrap d-inline-block text-truncate result-list-width'>
           {result.poster_path ? (
             <img alt={result.title} key={result.id + 'img'} src={`https://image.tmdb.org/t/p/w45${result.poster_path}`} />
