@@ -19,6 +19,24 @@ export default function MovieNight({ selectedPoll, lang }) {
     getDb()
   }, [lang, getDb])
 
+  const optionsTemp = {
+    _id: Date.now(),
+    hello: 'world',
+    good: 'bye'
+  }
+
+  const createPollPost = async () => {
+    try {
+      await fetch(`/api/${lang}/movieNightAddNew`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(optionsTemp)
+      })
+    } catch (e) {
+      console.error(e)
+    }
+  }
+
   const log = () => {
     console.log('data', data)
     console.log('movies', movieData)
@@ -69,6 +87,7 @@ export default function MovieNight({ selectedPoll, lang }) {
             </ul>
           </section>
           <section className='row'>{cards()}</section>
+          <button onClick={createPollPost}>POST</button>
         </main>
       ) : null}
     </Fragment>

@@ -1,5 +1,5 @@
 import React, { useState, Fragment } from 'react'
-import i18n from './../i18n.json'
+import i18n from '../i18n.json'
 
 export default function MovieNightBar({ lang, pollId }) {
   const [labels] = useState(i18n.pollBar)
@@ -17,7 +17,7 @@ export default function MovieNightBar({ lang, pollId }) {
           <div className='container'>
             <span>
               {labels.text[lang]}{' '}
-              <a className='text-light' href={`/${lang}/movienight/${pollId}?poll=${pollId}`}>
+              <a className='text-light' href={`/${lang}/movieNight/${pollId}?poll=${pollId}`}>
                 [{pollId}]
               </a>
             </span>

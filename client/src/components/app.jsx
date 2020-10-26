@@ -30,7 +30,7 @@ export default function App() {
           <Route exact path='/:lang' component={HomepageWrapper} />
           <Redirect exact from='/' to={`/${lang}`} />
           <Route path='/:lang/movie/:id' component={MovieDetailsWrapper} />
-          <Route path='/:lang/movienight/:id' component={MovieNightWrapper} />
+          <Route path='/:lang/movieNight/:id' component={MovieNightWrapper} />
           <Route component={Page404} />
         </Switch>
       </BrowserRouter>

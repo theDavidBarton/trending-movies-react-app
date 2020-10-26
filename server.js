@@ -3,7 +3,8 @@
 const express = require('express')
 const request = require('request')
 const path = require('path')
-const { mongoDbSearch, mongoDbCreate } = require('./lib/mongoUtils')
+const bodyParser = require('body-parser')
+const { mongoDbSearch, mongoDbCreate, mongoDbUpdate } = require('./lib/mongoUtils')
 const tmdbApiKey = process.env.TMDB_API_KEY
 
 const optionsTrending = {
@@ -76,7 +77,7 @@ function endpointCreation() {
   try {
     const app = express()
     const port = process.env.PORT || 5000
-
+    app.use(bodyParser.json())
     app.use(express.static(path.join(__dirname, 'client/build')))
     // required to serve SPA on heroku production without routing problems; it will skip only 'api' calls
     if (process.env.NODE_ENV === 'production') {
@@ -124,6 +125,7 @@ function endpointCreation() {
       console.log(`/api/${lang}/movieAutocomplete?q=${query} endpoint has been called!`)
     })
 
+    // search for polls (movie nights)
     app.get('/api/:lang/movieNight/:pollId', async (req, res) => {
       const pollId = req.params.pollId
       const lang = req.params.lang
@@ -131,11 +133,19 @@ function endpointCreation() {
       console.log(`/api/${lang}/movieNight/${pollId} endpoint has been called!`)
     })
 
-    app.post('/api/:lang/movieNightAddNew/:pollId', async (req, res) => {
+    //  create polls (movie nights)
+    app.post('/api/:lang/movieNightAddNew', async (req, res) => {
+      const lang = req.params.lang
+      res.send(await mongoDbCreate(req.body))
+      console.log(`/api/${lang}/movieNightAddNew endpoint has been called!`)
+    })
+
+    //  update polls (movie nights)
+    app.post('/api/:lang/movieNightUpdate/:pollId', async (req, res) => {
       const pollId = req.params.pollId
       const lang = req.params.lang
-      res.json(await mongoDbCreate(req.body))
-      console.log(`/api/${lang}/movieNightAddNew/${pollId} endpoint has been called!`)
+      res.send(await mongoDbUpdate(pollId, req.body))
+      console.log(`/api/${lang}/movieNightUpdate/${pollId} endpoint has been called!`)
     })
 
     app.listen(port)
