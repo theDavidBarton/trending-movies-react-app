@@ -19,12 +19,11 @@ export default function App() {
   return (
     <div className='App'>
       <nav className='lang-position'>
-        <LangSelector lang={lang} currentLang='en' pollId={pollId} />{' '}
-        <LangSelector lang={lang} currentLang='sv' pollId={pollId} />
+        <LangSelector lang={lang} currentLang='en' /> <LangSelector lang={lang} currentLang='sv' />
       </nav>
       <MovieNightBar lang={lang} pollId={pollId} />
       <CookieBar lang={lang} />
-      <Header lang={lang} pollId={pollId} />
+      <Header lang={lang} />
       <BrowserRouter>
         <Switch>
           <Route exact path='/:lang' component={HomepageWrapper} />

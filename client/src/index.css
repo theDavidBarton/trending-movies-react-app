@@ -5,6 +5,10 @@
   font-family: 'PT Sans Narrow', sans-serif;
 }
 
+main {
+  min-height: 100vh;
+}
+
 /* 404, footer */
 .resized-logo {
   height: 100%;
@@ -96,11 +100,39 @@
 
 /* Movie Night */
 .poll-votes {
-  font-size: 3rem;
+  font-size: 2rem;
   background-color: var(--warning);
-  padding: 1rem;
+  padding: 0.5rem;
 }
 
 .smaller {
   font-size: 0.8rem;
+}
+
+.vote-button {
+  cursor: pointer;
+  filter: grayscale(1);
+  opacity: 78%;
+  top: 1rem;
+  right: 2rem;
+  padding: 1rem;
+  padding-left: 1.4rem;
+  padding-top: 0.8rem;
+  font-size: 2rem;
+  background-color: var(--green);
+  border-radius: 100%;
+  width: 5rem;
+  height: 5rem;
+  position: absolute;
+  transition: 0.3s;
+}
+
+.vote-button:hover {
+  filter: grayscale(0);
+  opacity: 100%;
+}
+
+.vote-button:active {
+  background-color: var(--red);
+  transform: rotate(10deg);
 }
