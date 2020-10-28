@@ -11,6 +11,7 @@ import LangSelector from './langSelector'
 import urlParamFinder from './../lib/urlParamFinder'
 import pollParamFinder from './../lib/pollParamFinder'
 import MovieNightBar from './movieNightBar'
+import MovieNightAddNewWrapper from './movieNightAddNewWrapper'
 
 export default function App() {
   const [lang] = useState(urlParamFinder() || 'en')
@@ -30,6 +31,7 @@ export default function App() {
           <Redirect exact from='/' to={`/${lang}`} />
           <Route path='/:lang/movie/:id' component={MovieDetailsWrapper} />
           <Route path='/:lang/movieNight/:id' component={MovieNightWrapper} />
+          <Route path='/:lang/MovieNightAddNew' component={MovieNightAddNewWrapper} />
           <Route component={Page404} />
         </Switch>
       </BrowserRouter>

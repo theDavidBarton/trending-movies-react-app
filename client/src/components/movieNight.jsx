@@ -108,9 +108,9 @@ export default function MovieNight({ selectedPoll, lang }) {
   }, [lang, getDb])
 
   return (
-    <Fragment>
+    <main className='container'>
       {data ? (
-        <main className='container'>
+        <Fragment>
           <div className='row'>
             {log()}
             {false ? createPoll() : null}
@@ -140,8 +140,8 @@ export default function MovieNight({ selectedPoll, lang }) {
             {data.movies.length > 0 ? cards() : <h3 className='col'>No movies added yet...</h3>}
           </section>
           <button onClick={createPollPost}>POST</button>
-        </main>
+        </Fragment>
       ) : null}
-    </Fragment>
+    </main>
   )
 }
