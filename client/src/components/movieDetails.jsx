@@ -1,13 +1,23 @@
 import React, { useState, useEffect, Fragment, useCallback } from 'react'
 import i18n from './../i18n.json'
+import MovieDetailsSkeletonLoad from './movieDetailsSkeleton'
+import pollParamFinder from './../lib/pollParamFinder'
 
 export default function MovieDetails({ selectedMovie, lang }) {
   const [data, setData] = useState(null)
+  const [pollData, setPollData] = useState(null)
   const [dataIsReady, setDataIsReady] = useState(false)
   const [id] = useState(selectedMovie)
   const [displayedCastMembers, setDisplayedCastMembers] = useState(5)
   const [fullCastIsOpened, setFullCastIsOpened] = useState(false)
   const [labels] = useState(i18n.details)
+  const [pollId] = useState(pollParamFinder() || null)
+  const [pollEnded, setPollEnded] = useState(false)
+  const [alreadyAdded, setAlreadyAdded] = useState(false)
+
+  // force update hooks, https://stackoverflow.com/questions/53215285/how-can-i-force-component-to-re-render-with-hooks-in-react
+  const [, setUnusedState] = useState()
+  const forceUpdate = useCallback(() => setUnusedState({}), [])
 
   const getTmdbApi = useCallback(async () => {
     try {
@@ -22,9 +32,27 @@ export default function MovieDetails({ selectedMovie, lang }) {
     }
   }, [lang, id])
 
+  const getDb = useCallback(async () => {
+    try {
+      if (pollId) {
+        const response = await fetch(`/api/${lang}/movieNight/${pollId}`)
+        const json = await response.json()
+        setPollData(json)
+        const movieIds = json.movies.map(el => el.id)
+        if (movieIds.includes(parseInt(id))) {
+          setAlreadyAdded(true)
+          forceUpdate()
+        }
+      }
+    } catch (e) {
+      console.error(e)
+    }
+  }, [lang, pollId, id, forceUpdate])
+
   useEffect(() => {
     getTmdbApi()
-  }, [lang, getTmdbApi])
+    getDb()
+  }, [lang, getTmdbApi, getDb])
 
   // component candidates:
   const getTitle = () => {
@@ -178,8 +206,41 @@ export default function MovieDetails({ selectedMovie, lang }) {
     setFullCastIsOpened(false)
   }
 
+  const updatePollPost = async options => {
+    try {
+      await fetch(`/api/${lang}/movieNightUpdate/${pollId}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(options)
+      })
+    } catch (e) {
+      console.error(e)
+    }
+  }
+
+  const addMovie = () => {
+    const tempData = pollData
+    const obj = {
+      id: data.id,
+      title: data.title,
+      overview: data.overview,
+      release_date: data.release_date,
+      poster_path: data.poster_path,
+      pollVotes: 0,
+      pollAddedBy: 0
+    }
+    tempData.movies.push(obj)
+    setPollData(tempData)
+    updatePollPost(pollData)
+    forceUpdate()
+  }
+
+  const isItStillAThing = () => {
+    if (Date.parse(pollData.pollEnds) > Date.now()) setPollEnded(true)
+  }
+
   const bgImage = dataIsReady
-    ? 'linear-gradient(rgba(52,58,64,.6), rgba(52,58,64,.6)), url(https://image.tmdb.org/t/p/w1280' + getBackground() + ')'
+    ? 'linear-gradient(rgba(0,0,0,.9), rgba(52,58,64,.9)), url(https://image.tmdb.org/t/p/w1280' + getBackground() + ')'
     : 'url(data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==)'
 
   return (
@@ -187,6 +248,7 @@ export default function MovieDetails({ selectedMovie, lang }) {
       {dataIsReady ? (
         <div className='container'>
           <header border-bottom='1px' solid='#000'>
+            {isItStillAThing}
             <h2 className='display-4 mt-2 heading-line' id='movieDetailsLabel' display='inline'>
               {getTitle()}
               <span className='lead heading-line'> ({getReleaseYear()}) </span>
@@ -197,9 +259,22 @@ export default function MovieDetails({ selectedMovie, lang }) {
           ) : (
             <blockquote className='blockquote-footer lead'>{getTagline()}</blockquote>
           )}
-          <div className='row text-white greyscale-img-background' style={{ backgroundImage: bgImage }}>
+          <div className='row text-white overview-img-background' style={{ backgroundImage: bgImage }}>
             <div className='col-md-3 my-3'>
               <img src={getPoster()} alt='poster' className='poster-width' />
+              {pollId && !pollEnded ? (
+                <Fragment>
+                  {!alreadyAdded ? (
+                    <span title='Add this movie to current poll' className='add-to-poll-active' onClick={addMovie}>
+                      ➕
+                    </span>
+                  ) : (
+                    <span title='Movie is added already to poll' className='add-to-poll-inactive'>
+                      😉
+                    </span>
+                  )}
+                </Fragment>
+              ) : null}
             </div>
             <div className='col m-4'>
               <div>
@@ -243,7 +318,9 @@ export default function MovieDetails({ selectedMovie, lang }) {
             </div>
           </div>
         </div>
-      ) : null}
+      ) : (
+        <MovieDetailsSkeletonLoad />
+      )}
     </Fragment>
   )
 }

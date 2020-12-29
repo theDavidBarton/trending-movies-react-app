@@ -2,13 +2,15 @@ import React, { useState } from 'react'
 
 export default function MovieNightAddNew({ lang }) {
   const [data] = useState(null)
-  const [pollId, setPollId] = useState(null)
-  const [pollTitle, setPollTitle] = useState(null)
-  const [pollStarts, setPollStarts] = useState(null)
-  const [pollEnds, setPollEnds] = useState(null)
+  const [isSubmitted, setIsSubmitted] = useState(false)
+  const [pollId] = useState(Date.now())
+  const [pollTitle, setPollTitle] = useState('')
+  const [pollStarts, setPollStarts] = useState('')
+  const [pollEnds, setPollEnds] = useState('')
   const [numberOfCollaborators, setNumberOfCollaborators] = useState(1)
   const [collaborators, setCollaborators] = useState([])
   const [editorId] = useState(0)
+  const nameExamples = ['Cindy', 'Stan "the Man"', 'Tommy', 'Jane', 'Paulie', 'Anne', 'April', 'Nelson', 'Rose']
 
   // eslint-disable-next-line
   const optionsTemp = {
@@ -46,6 +48,7 @@ export default function MovieNightAddNew({ lang }) {
         body: JSON.stringify(options)
       })
       console.log(options)
+      setIsSubmitted(true)
     } catch (e) {
       console.error(e)
     }
@@ -62,47 +65,74 @@ export default function MovieNightAddNew({ lang }) {
   return (
     <main className='container'>
       <div className='row'>
-        {() => setPollId(Date.now())}
         {false ? createPoll() && log() : null}
         <h1 className='col'>Create new Movie Night poll</h1>
       </div>
-      <section className='row'>
-        <ul className='list-unstyled col'>
-          <li>
-            <strong>Poll title:</strong> <input type='text' onChange={event => setPollTitle(event.target.value)}></input>
-          </li>
-          <li>
-            <strong>Poll starts:</strong> <input type='date' onChange={event => setPollStarts(event.target.value)}></input>
-          </li>
-          <li>
-            <strong>Poll ends:</strong> <input type='date' onChange={event => setPollEnds(event.target.value)}></input>
-          </li>
-          <li>
-            <strong>Your name:</strong>{' '}
-            <input type='text' onChange={event => setCollaborators([{ id: 0, name: event.target.value }])}></input>
-          </li>
-          <li>
-            <strong>Number of collaborators:</strong>{' '}
-            <input
-              type='number'
-              name='collaborator-number'
-              min='1'
-              max='10'
-              onChange={event => setNumberOfCollaborators(event.target.value)}></input>
-          </li>
-          <li>
-            <strong>Collaborators:</strong>{' '}
-          </li>
-          {[...Array(parseInt(numberOfCollaborators))].map((el, i) => (
-            <li key={Math.floor(Math.random() * 100000000)}>
+      {!isSubmitted ? (
+        <form className='row poll-form' onSubmit={createPollPost}>
+          <ul className='list-unstyled col'>
+            <li>
+              <strong>Poll title:</strong>{' '}
               <input
+                required
                 type='text'
-                onChange={event => setCollaborators(arr => [...arr, { id: i + 1, name: event.target.value }])}></input>
+                placeholder='e.g. Halloween with friends'
+                onChange={event => setPollTitle(event.target.value)}></input>
             </li>
-          ))}
-        </ul>
-      </section>
-      <button onClick={createPollPost}>POST</button>
+            <li>
+              <strong>Poll starts:</strong>{' '}
+              <input required type='date' onChange={event => setPollStarts(event.target.value)}></input>
+            </li>
+            <li>
+              <strong>Poll ends:</strong> <input required type='date' onChange={event => setPollEnds(event.target.value)}></input>
+            </li>
+            <li>
+              <strong>Your name:</strong>{' '}
+              <input
+                required
+                type='text'
+                placeholder='e.g. Dave'
+                onChange={event => setCollaborators([{ id: 0, name: event.target.value }])}></input>
+            </li>
+            <li>
+              <strong>Number of collaborators:</strong>{' '}
+              <input
+                required
+                type='number'
+                name='collaborator-number'
+                value={numberOfCollaborators}
+                min='1'
+                max='10'
+                onChange={event => setNumberOfCollaborators(event.target.value)}></input>
+            </li>
+            <li>
+              <strong>Collaborators:</strong>{' '}
+            </li>
+            {[...Array(parseInt(numberOfCollaborators))].map((el, i) => (
+              <li key={Math.floor(Math.random() * 100000000)}>
+                <input
+                  required
+                  type='text'
+                  placeholder={`e.g. ${nameExamples[i]}`}
+                  /* onChange={event => setCollaborators(arr => [...arr, { id: i + 1, name: event.target.value }])} */
+                ></input>
+              </li>
+            ))}
+            <li>
+              <input type='submit' value='Create poll' className='btn btn-dark' />
+            </li>
+          </ul>
+        </form>
+      ) : pollTitle ? (
+        <div className='alert alert-success'>
+          You've just created a new poll: {pollTitle}. You will need to share this link with your collaborators to add new movies
+          and also to vote on them in the poll's active period:{' '}
+          <a
+            href={`${window.location.origin}/${lang}/movieNight/${pollId}?poll=${pollId}`}>{`${window.location.origin}/${lang}/movieNight/${pollId}?poll=${pollId}`}</a>
+        </div>
+      ) : (
+        <div className='alert alert-danger'>Something went wrong during your poll creation :( try it again!</div>
+      )}
     </main>
   )
 }

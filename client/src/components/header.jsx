@@ -2,7 +2,6 @@ import React, { useState, useEffect, useCallback } from 'react'
 import SearchForm from './searchForm'
 import logo from './../img/logo-big.svg'
 import github from './../img/github.svg'
-import linkedin from './../img/linkedin.png'
 import i18n from './../i18n.json'
 
 export default function Header({ lang }) {
@@ -55,29 +54,10 @@ export default function Header({ lang }) {
             <SearchForm lang={lang} labels={labels} />
             <h1 className='d-none d-md-block'>{labels.inputLabel[lang]}</h1>
           </div>
-          <div className='col-auto align-self-end my-2 d-none d-lg-block'>
-            <ul className='list-unstyled align-bottom social-list-margin'>
-              <li className='my-2'>
-                <a
-                  href='https://github.com/theDavidBarton'
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  className='btn btn-light social-link-style'>
-                  <img className='float-left social-img-style' alt='github logo' src={github} />
-                  GitHub
-                </a>
-              </li>
-              <li className='my-2'>
-                <a
-                  href='https://linkedin.com/in/theDavidBarton/'
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  className='btn btn-light float-left social-link-style'>
-                  <img className='float-left social-img-style' alt='linkedin logo' src={linkedin} />
-                  LinkedIn
-                </a>
-              </li>
-            </ul>
+          <div className='col-auto col-mob align-self-center mt-5'>
+            <a href='https://github.com/theDavidBarton/video-games-on-RAWG-react-app' target='_blank' rel='noopener noreferrer'>
+              <img className='float-left social-img-style' alt='github logo' src={github} />
+            </a>
           </div>
         </div>
       </div>

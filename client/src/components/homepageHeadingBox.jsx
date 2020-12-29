@@ -14,7 +14,7 @@ export default function HomepageHeadingBox({ lang }) {
               dangerouslySetInnerHTML={{
                 __html: dompurify.sanitize(labels.heading[lang])
               }}></h1>
-            <p className='alert alert-warning mx-3 w-50'>{labels.warning[lang]}</p>
+            <p className='alert alert-light mx-3 w-50'>{labels.warning[lang]}</p>
           </div>
         </div>
       </div>

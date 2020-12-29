@@ -24,18 +24,22 @@ main {
   width: 104px;
 }
 .social-img-style {
-  margin-right: 0.5em;
-  height: 22px;
+  height: 45px;
+  filter: invert(100%);
+}
+
+.col-mob {
+  padding-right: auto;
+  padding-left: auto;
 }
 
 /* movieDetails */
 .heading-line {
   line-height: 0.8em;
 }
-.greyscale-img-background {
+.overview-img-background {
   background-repeat: no-repeat;
   background-size: cover;
-  filter: grayscale(100%);
 }
 .poster-width {
   width: 100%;
@@ -127,12 +131,54 @@ main {
   transition: 0.3s;
 }
 
-.vote-button:hover {
+.vote-button:hover,
+.add-to-poll-active:hover {
   filter: grayscale(0);
   opacity: 100%;
 }
 
-.vote-button:active {
+.vote-button:active,
+.add-to-poll-active:active {
   background-color: var(--red);
-  transform: rotate(10deg);
+  transform: scale(0.8, 0.8);
+}
+
+.add-to-poll-active {
+  cursor: pointer;
+  filter: grayscale(1);
+  opacity: 78%;
+  top: 1rem;
+  right: 2rem;
+  padding: 1rem;
+  padding-left: 1.15rem;
+  padding-top: 1rem;
+  font-size: 2rem;
+  background-color: var(--green);
+  border-radius: 100%;
+  width: 5rem;
+  height: 5rem;
+  position: absolute;
+  transition: 0.3s;
+}
+
+.add-to-poll-inactive {
+  cursor: pointer;
+  filter: grayscale(1);
+  opacity: 78%;
+  top: 1rem;
+  right: 2rem;
+  padding: 1rem;
+  padding-left: 1.15rem;
+  padding-top: 1rem;
+  font-size: 2rem;
+  background-color: var(--green);
+  border-radius: 100%;
+  width: 5rem;
+  height: 5rem;
+  position: absolute;
+  transition: 0.3s;
+}
+
+.poll-form > ul > li {
+  padding: 0.2rem;
 }
