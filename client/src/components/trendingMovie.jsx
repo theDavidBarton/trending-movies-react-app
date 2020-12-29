@@ -28,7 +28,7 @@ export default function TrendingMovie({ lang, value, data }) {
 
   return (
     <div className='col-md-4'>
-      <a href={`/${lang}/movie/${data.results[value].id}`} className='text-decoration-none'>
+      <a href={`/${lang}/movie/${data.results[value].id + window.location.search}`} className='text-decoration-none'>
         <div className='card bg-dark text-white border-0'>
           <div>
             <div className='img-zoom-container'>

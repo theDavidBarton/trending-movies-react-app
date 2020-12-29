@@ -3,6 +3,8 @@
 const express = require('express')
 const request = require('request')
 const path = require('path')
+const bodyParser = require('body-parser')
+const { mongoDbSearch, mongoDbCreate, mongoDbUpdate } = require('./lib/mongoUtils')
 const tmdbApiKey = process.env.TMDB_API_KEY
 
 const optionsTrending = {
@@ -46,15 +48,13 @@ const optionsMovieAutocomplete = {
 
 let parsedResult
 
-tmdbApiKey
-  ? console.log('TMDb api key is found')
-  : console.log('TMDb api key is NOT found among environment variables!')
+tmdbApiKey ? console.log('TMDb api key is found') : console.log('TMDb api key is NOT found among environment variables!')
 
 async function apiCall(options) {
   // (I.) promise to return the parsedResult for processing
   function tmdbRequest() {
-    return new Promise(function(resolve, reject) {
-      request(options, function(error, response, body) {
+    return new Promise((resolve, reject) => {
+      request(options, (error, response, body) => {
         try {
           resolve(JSON.parse(body))
         } catch (e) {
@@ -77,11 +77,11 @@ function endpointCreation() {
   try {
     const app = express()
     const port = process.env.PORT || 5000
-
+    app.use(bodyParser.json())
     app.use(express.static(path.join(__dirname, 'client/build')))
     // required to serve SPA on heroku production without routing problems; it will skip only 'api' calls
     if (process.env.NODE_ENV === 'production') {
-      app.get(/^((?!(api)).)*$/, function(req, res) {
+      app.get(/^((?!(api)).)*$/, (req, res) => {
         res.sendFile(path.join(__dirname, 'client/build', 'index.html'))
       })
     }
@@ -123,6 +123,29 @@ function endpointCreation() {
       optionsMovieAutocomplete.qs.query = query
       res.json(await apiCall(optionsMovieAutocomplete))
       console.log(`/api/${lang}/movieAutocomplete?q=${query} endpoint has been called!`)
+    })
+
+    // search for polls (movie nights)
+    app.get('/api/:lang/movieNight/:pollId', async (req, res) => {
+      const pollId = req.params.pollId
+      const lang = req.params.lang
+      res.json(await mongoDbSearch(pollId))
+      console.log(`/api/${lang}/movieNight/${pollId} endpoint has been called!`)
+    })
+
+    //  create polls (movie nights)
+    app.post('/api/:lang/movieNightAddNew', async (req, res) => {
+      const lang = req.params.lang
+      res.send(await mongoDbCreate(req.body))
+      console.log(`/api/${lang}/movieNightAddNew endpoint has been called!`)
+    })
+
+    //  update polls (movie nights)
+    app.post('/api/:lang/movieNightUpdate/:pollId', async (req, res) => {
+      const pollId = req.params.pollId
+      const lang = req.params.lang
+      res.send(await mongoDbUpdate(pollId, req.body))
+      console.log(`/api/${lang}/movieNightUpdate/${pollId} endpoint has been called!`)
     })
 
     app.listen(port)
