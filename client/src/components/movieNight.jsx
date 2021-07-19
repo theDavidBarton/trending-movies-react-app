@@ -36,9 +36,7 @@ export default function MovieNight({ selectedPoll, lang }) {
     console.log(data)
   }
 
-  const createPoll = () => {
-    window.location.href + '?poll=' + Date.now()
-  }
+  const createPoll = () => window.location.href + '?poll=' + Date.now()
 
   // force update hooks, https://stackoverflow.com/questions/53215285/how-can-i-force-component-to-re-render-with-hooks-in-react
   const [, setUnusedState] = useState()

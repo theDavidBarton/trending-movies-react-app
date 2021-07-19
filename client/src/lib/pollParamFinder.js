@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-expressions */
+
 export default function pollParamFinder() {
   let value
   const paramMatch = window.location.search.match(/(?<=poll=)(\d+)((?=&)|(?=$))/)

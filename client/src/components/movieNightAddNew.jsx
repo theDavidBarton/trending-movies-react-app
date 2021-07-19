@@ -54,9 +54,7 @@ export default function MovieNightAddNew({ lang }) {
     }
   }
 
-  const createPoll = () => {
-    window.location.href + '?poll=' + Date.now()
-  }
+  const createPoll = () => window.location.href + '?poll=' + Date.now()
 
   const log = () => {
     console.log(data)
