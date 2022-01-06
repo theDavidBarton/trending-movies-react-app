@@ -5,7 +5,13 @@
 
 # Trending Movies
 
-A movie database project made in React.Js, Node.Js, Express and deployed on Heroku. Production is available here on English or Swedish languages: [trending-movies-react-app.herokuapp.com](http://bit.ly/trending-movies-tmdb) (redirection happens from theDavidBarton.github.io, worry not!)
+## Reusing this project without forking
+
+⚠️ As I see more-and-more are using my application as an inspiration for their projects which is cool. 😊 **I want to ask you** to make sure that you comply with the [MIT](#license) license in case you are copy-pasting parts of it (means you are not forking, so the natural connection is cut between your work and the original source code) ☝️ (+ if you'd give me credits as my project was an "inspiration" for yours that would be much appreciated) Thank you! 🙏
+
+## About
+
+A movie database project made in React.Js, Node.Js, Express and deployed on Heroku.
 
 The project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -67,7 +73,7 @@ Deploy to environment: [https://trending-movies-react-app.herokuapp.com/](https:
 
 MIT License
 
-Copyright (c) 2019 David Barton
+Copyright (c) 2019-present David Barton
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
