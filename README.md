@@ -67,7 +67,7 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 ### `git push heroku master`
 
-Deploy to environment: [https://trending-movies-react-app.herokuapp.com/](https://trending-movies-react-app.herokuapp.com/)
+Deploy to environment.
 
 ## License
 
