@@ -9,17 +9,18 @@ export default function Header({ lang }) {
   const [data, setData] = useState(null)
   const [dataIsReady, setDataIsReady] = useState(false)
   const [labels] = useState(i18n.header)
+  const domain = process.env.NODE_ENV === 'production' ? 'https://trending-movies-react-app-backend.onrender.com' : ''
 
   const getTmdbApi = useCallback(async () => {
     try {
-      const response = await fetch(`/api/${lang}/topRatedRecommended`)
+      const response = await fetch(`${domain}/api/${lang}/topRatedRecommended`)
       const json = await response.json()
       setData(json)
       setDataIsReady(true)
     } catch (e) {
       console.error(e)
     }
-  }, [lang])
+  }, [lang, domain])
 
   useEffect(() => {
     getTmdbApi()

@@ -6,12 +6,13 @@ export default function SearchForm({ lang, labels }) {
   const [dataIsReady, setDataIsReady] = useState(false)
   const [dropdownIsopened, setDropdownIsopened] = useState(false)
   const [keyword, setKeyword] = useState('')
+  const domain = process.env.NODE_ENV === 'production' ? 'https://trending-movies-react-app-backend.onrender.com' : ''
 
   useEffect(() => {
     async function getTmdbApi() {
       if (keyword !== '' && keyword.length > 2) {
         try {
-          const response = await fetch(`/api/${lang}/movieAutocomplete?q=${keyword.toLowerCase()}`)
+          const response = await fetch(`${domain}/api/${lang}/movieAutocomplete?q=${keyword.toLowerCase()}`)
           const json = await response.json()
           setData(json)
           setDataIsReady(true)
@@ -21,7 +22,7 @@ export default function SearchForm({ lang, labels }) {
       }
     }
     getTmdbApi()
-  }, [lang, keyword])
+  }, [lang, keyword, domain])
 
   const setKeywordInInput = event => {
     setKeyword(event.target.value)

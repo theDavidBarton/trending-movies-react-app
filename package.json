@@ -1,9 +1,10 @@
 {
   "name": "trending-movies-react-app-express-server",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "main": "server.js",
   "license": "MIT",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "request": "^2.88.0"
   },
@@ -13,6 +14,6 @@
     "how-much-is-the-fish": "heroku ps -a trending-movies-react-app"
   },
   "engines": {
-    "node": "12.x"
+    "node": "16.x"
   }
 }

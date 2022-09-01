@@ -8,10 +8,11 @@ export default function MovieDetails({ selectedMovie, lang }) {
   const [displayedCastMembers, setDisplayedCastMembers] = useState(5)
   const [fullCastIsOpened, setFullCastIsOpened] = useState(false)
   const [labels] = useState(i18n.details)
+  const domain = process.env.NODE_ENV === 'production' ? 'https://trending-movies-react-app-backend.onrender.com' : ''
 
   const getTmdbApi = useCallback(async () => {
     try {
-      const response = await fetch(`/api/${lang}/movieDetails/${id}`)
+      const response = await fetch(`${domain}/api/${lang}/movieDetails/${id}`)
       const json = await response.json()
       // issue: #83; docs: https://www.themoviedb.org/documentation/api/status-codes
       if (json.status_code > 1) throw new Error('The resource you requested could not be found.')
@@ -20,7 +21,7 @@ export default function MovieDetails({ selectedMovie, lang }) {
     } catch (e) {
       console.error(e)
     }
-  }, [lang, id])
+  }, [lang, id, domain])
 
   useEffect(() => {
     getTmdbApi()
