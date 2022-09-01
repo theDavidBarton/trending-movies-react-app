@@ -1,8 +1,8 @@
 'use strict'
 
 const express = require('express')
+const cors = require('cors')
 const request = require('request')
-const path = require('path')
 const tmdbApiKey = process.env.TMDB_API_KEY
 
 const optionsTrending = {
@@ -77,14 +77,7 @@ function endpointCreation() {
   try {
     const app = express()
     const port = process.env.PORT || 5000
-
-    app.use(express.static(path.join(__dirname, 'client/build')))
-    // required to serve SPA on heroku production without routing problems; it will skip only 'api' calls
-    if (process.env.NODE_ENV === 'production') {
-      app.get(/^((?!(api)).)*$/, function(req, res) {
-        res.sendFile(path.join(__dirname, 'client/build', 'index.html'))
-      })
-    }
+    app.use(cors({ origin: 'https://trending-movies-react-app-frontend.onrender.com' }));
 
     // providing a constant endpoint for trending movies
     app.get('/api/:lang/trending', async (req, res) => {
