@@ -11,7 +11,7 @@
 
 ## About
 
-A movie database project made in React.Js, Node.Js, Express and deployed on Heroku.
+A movie database project made in React.Js, Node.Js, Express and deployed on Render.
 
 The project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
