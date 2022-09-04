@@ -77,7 +77,13 @@ function endpointCreation() {
   try {
     const app = express()
     const port = process.env.PORT || 5000
-    app.use(cors({ origin: 'https://trending-movies-react-app-frontend.onrender.com' }));
+    app.use(cors({ origin: ['https://trending-movies-react-app-frontend.onrender.com', 'https://thedavidbarton.github.io/'] }))
+
+    // providing a constant endpoint for healt checks
+    app.get('/health', async (req, res) => {
+      res.json({ status: 'OK' })
+      console.log(`/health endpoint has been called ${JSON.stringify(req.query)}!`)
+    })
 
     // providing a constant endpoint for trending movies
     app.get('/api/:lang/trending', async (req, res) => {
