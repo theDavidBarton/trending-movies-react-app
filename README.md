@@ -65,6 +65,14 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
+## Simplified API docs
+
+- `GET` **/api/{lang}/trending** - used on the home page
+- `GET` **/api/{lang}/topRatedRecommended** - used e.g. in the header components' bg image
+- `GET` **/api/{lang}/movieDetails/{id}** -  the content of a specific movie
+- `GET` **/api/{lang}/movieAutocomplete?q={query}**; `?q=` (mandatory) - used in the search input component's autocomplete
+- `GET` **/health?from={origin_url}** - `?from=` (optional) - used for health checks and to wake up idling Node.Js backend on free hosting sites
+
 ## License
 
 MIT License
